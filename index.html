@@ -14,7 +14,6 @@
                     colors: {
                         spaceBg: '#030712',
                         cyanAccent: '#00F0FF',
-                        panelBorder: '#0F172A',
                     },
                     fontFamily: {
                         mono: ['JetBrains Mono', 'Menlo', 'monospace'],
@@ -34,18 +33,22 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
         
         body {
             background-color: #040814;
             color: #94A3B8;
             background-image: 
-              linear-gradient(to right, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
-              linear-gradient(to bottom, rgba(0, 240, 255, 0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
+              linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
+              linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
         }
         .text-glow {
-            text-shadow: 0 0 10px rgba(0, 240, 255, 0.4);
+            text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
+        }
+        .terminal-grid {
+            background-image: radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
+            background-size: 20px 20px;
         }
     </style>
 </head>
@@ -56,7 +59,6 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Vector Icon Helper
         function Icon({ name, className }) {
             useEffect(() => {
                 if (window.lucide) window.lucide.createIcons();
@@ -74,20 +76,20 @@
             const handleFormSubmit = (e) => {
                 e.preventDefault();
                 if(!formData.name || !formData.email || !formData.message) {
-                    setStatus('ERROR: Required metadata fields missing.');
+                    setStatus('ERROR: Required transmission parameters missing.');
                     return;
                 }
                 setDbSubmissions([{ id: Date.now(), timestamp: new Date().toLocaleTimeString(), ...formData }, ...dbSubmissions]);
                 setFormData({ name: '', email: '', subject: '', message: '' });
-                setStatus('TRANSMISSION SUCCESSFUL: Data committed to local state state buffer.');
+                setStatus('TRANSMISSION SUCCESSFUL: Buffer logged locally.');
                 setTimeout(() => setStatus(''), 5000);
             };
 
             return (
                 <div className="min-h-screen selection:bg-cyanAccent/20 selection:text-white">
                     
-                    {/* Header bar from screenshots */}
-                    <header className="sticky top-0 z-50 bg-[#040814]/90 backdrop-blur-sm border-b border-slate-900 px-6 lg:px-16 py-4 flex justify-between items-center">
+                    {/* Navigation Header */}
+                    <header className="sticky top-0 z-50 bg-[#040814]/90 backdrop-blur-sm border-b border-slate-900/60 px-6 lg:px-16 py-4 flex justify-between items-center">
                         <div className="flex items-center gap-3">
                             <div className="border border-cyanAccent/30 px-1.5 py-0.5 text-[10px] font-mono text-cyanAccent tracking-widest">PS</div>
                             <div>
@@ -96,19 +98,19 @@
                             </div>
                         </div>
                         <nav className="hidden md:flex gap-8 text-[11px] font-mono tracking-widest text-slate-400">
-                            <a href="#about" className="hover:text-white transition-colors">ABOUT</a>
+                            <a href="#profile" className="hover:text-white transition-colors">ABOUT</a>
                             <a href="#experience" className="hover:text-white transition-colors">EXPERIENCE</a>
-                            <a href="#projects" className="hover:text-white transition-colors">PROJECTS</a>
-                            <a href="#skills" className="hover:text-white transition-colors">SKILLS</a>
-                            <a href="#education" className="hover:text-white transition-colors">EDUCATION</a>
+                            <a href="#missions" className="hover:text-white transition-colors">PROJECTS</a>
+                            <a href="#toolkit" className="hover:text-white transition-colors">SKILLS</a>
+                            <a href="#training" className="hover:text-white transition-colors">EDUCATION</a>
                         </nav>
                         <a href="#contact" className="border border-cyanAccent/40 px-4 py-1.5 text-[10px] font-mono tracking-widest text-cyanAccent hover:bg-cyanAccent/10 transition-all flex items-center gap-2">
                             <span className="w-1 h-1 bg-cyanAccent animate-pulse" /> CONTACT
                         </a>
                     </header>
 
-                    {/* Section 1: Cinematic Hero Layout */}
-                    <section id="about" className="min-h-[90vh] px-6 lg:px-16 pt-20 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-7xl mx-auto">
+                    {/* Hero Layout */}
+                    <section className="min-h-[85vh] px-6 lg:px-16 pt-20 pb-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-7xl mx-auto">
                         <div className="lg:col-span-7 space-y-8">
                             <div className="flex items-center gap-2 text-[10px] font-mono text-slate-500 tracking-widest uppercase">
                                 <span className="inline-block w-2 h-2 bg-cyanAccent"></span> 
@@ -125,8 +127,7 @@
                                 <span>Pune, India</span>
                             </div>
                             
-                            {/* Focus Area Technical Grid blocks */}
-                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-slate-900 border border-slate-900 mt-12">
+                            <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-slate-900 border border-slate-900/60 mt-12">
                                 <div className="bg-[#050B18] p-4 font-mono">
                                     <div className="text-[9px] text-slate-600 mb-1">FOCUS</div>
                                     <div className="text-xs text-slate-200 font-sans font-medium">Propulsion & Cryogenic Systems</div>
@@ -146,7 +147,7 @@
                             </div>
 
                             <div className="flex gap-4 pt-4 text-xs font-mono tracking-widest">
-                                <a href="#projects" className="bg-cyanAccent text-black font-bold px-5 py-3 hover:bg-white transition-colors flex items-center gap-2">
+                                <a href="#missions" className="bg-cyanAccent text-black font-bold px-5 py-3 hover:bg-white transition-colors flex items-center gap-2">
                                     VIEW MISSIONS <Icon name="arrow-down-right" className="w-3.5 h-3.5" />
                                 </a>
                                 <a href="#contact" className="border border-slate-800 text-slate-300 px-5 py-3 hover:border-cyanAccent hover:text-cyanAccent transition-colors">
@@ -157,16 +158,70 @@
 
                         <div className="lg:col-span-5 text-xs text-slate-400 font-sans leading-relaxed border-l border-slate-900 pl-8 space-y-4">
                             <p>
-                                Engineering Project Manager with 3+ years of experience delivering complex aerospace programs[cite: 1] — propulsion systems, reusable launch vehicles, and ground test facilities[cite: 1]. 
+                                Engineering Project Manager with 3+ years delivering complex aerospace programs — propulsion platforms, reusable launch vehicles, and ground test test environments.
                             </p>
                             <p>
-                                Proven expertise in leading cross-functional teams, managing integrated schedules, budgets, critical paths, and Earned Value metrics (EAC/ETC)[cite: 1]. I bridge Systems Engineering with Project Management to drive successful execution from concept to delivery[cite: 1].
+                                Bridge Systems Engineering loops directly with project management parameters to maintain absolute runtime tracking bounds against budgets, milestones, and critical risks from initial concept arrays to physical site execution validation.
                             </p>
                         </div>
                     </section>
 
-                    {/* Section 2: Experience Timeline Section */}
-                    <section id="experience" className="py-24 px-6 lg:px-16 border-t border-slate-900 max-w-7xl mx-auto">
+                    {/* Image 1: // 01 · PROFILE Section Layout */}
+                    <section id="profile" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+                            <div className="lg:col-span-4 space-y-3">
+                                <div className="text-[11px] font-mono text-cyanAccent tracking-widest">// 01 · PROFILE</div>
+                                <h3 className="text-4xl font-bold text-white tracking-tight font-sans">Engineering programs that fly.</h3>
+                            </div>
+                            <div className="lg:col-span-8 flex items-end">
+                                <p className="text-sm text-slate-400 max-w-2xl leading-relaxed font-sans">
+                                    I bring the calm signal to complex aerospace programs — translating stakeholder intent into engineered systems, keeping teams aligned when the tempo compresses, and closing the loop with rigorous verification. Below is how I operate.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-950 border border-slate-900/60">
+                            <div className="bg-[#040916] p-8 space-y-4 border-b md:border-b-0 md:border-r border-slate-900/60">
+                                <div className="flex items-center gap-3 text-cyanAccent font-mono text-[11px] tracking-wider">
+                                    <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="target" className="w-4 h-4" /></div>
+                                    PROGRAM COMMAND
+                                </div>
+                                <p className="text-sm text-slate-300 leading-relaxed font-sans pt-2">
+                                    Own scope, cost, and schedule with unambiguous accountability across engineering, ops, and vendors.
+                                </p>
+                            </div>
+                            <div className="bg-[#040916] p-8 space-y-4">
+                                <div className="flex items-center gap-3 text-cyanAccent font-mono text-[11px] tracking-wider">
+                                    <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="network" className="w-4 h-4" /></div>
+                                    SYSTEMS THINKING
+                                </div>
+                                <p className="text-sm text-slate-300 leading-relaxed font-sans pt-2">
+                                    Trace intent from mission need down to shall-statement, and back up through verification evidence.
+                                </p>
+                            </div>
+                            <div className="bg-[#040916] p-8 space-y-4 border-t border-slate-900/60 border-b md:border-b-0 md:border-r">
+                                <div className="flex items-center gap-3 text-cyanAccent font-mono text-[11px] tracking-wider">
+                                    <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="shield-alert" className="w-4 h-4" /></div>
+                                    RISK DISCIPLINE
+                                </div>
+                                <p className="text-sm text-slate-300 leading-relaxed font-sans pt-2">
+                                    Quantify, retire, or accept. Every risk has a name, an owner, and a burn-down date.
+                                </p>
+                            </div>
+                            <div className="bg-[#040916] p-8 space-y-4 border-t border-slate-900/60">
+                                <div className="flex items-center gap-3 text-cyanAccent font-mono text-[11px] tracking-wider">
+                                    <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="git-merge" className="w-4 h-4" /></div>
+                                    INTEGRATION FIRST
+                                </div>
+                                <p className="text-sm text-slate-300 leading-relaxed font-sans pt-2">
+                                    Design interfaces before parts. Integration debt is the most expensive kind.
+                                </p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Experience Section */}
+                    <section id="experience" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
                             <div className="lg:col-span-4 space-y-3">
                                 <div className="text-[11px] font-mono text-cyanAccent tracking-widest">// 02 · FLIGHT LOG</div>
@@ -177,24 +232,21 @@
                             </div>
                         </div>
 
-                        {/* Chronology Line mapping */}
                         <div className="space-y-16 relative before:absolute before:top-0 before:bottom-0 before:left-[11px] before:w-px before:bg-slate-900">
-                            
-                            {/* Role 1 */}
                             <div className="relative pl-12 group">
                                 <div className="absolute left-1.5 top-2 w-3 h-3 bg-[#040814] border-2 border-cyanAccent rounded-full text-glow"></div>
                                 <div className="space-y-4">
                                     <div className="text-[11px] font-mono text-slate-500 tracking-wider">FEB 2026 — PRESENT</div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-white font-sans">Systems Engineer — Cryogenics (Project Execution Lead)[cite: 1]</h4>
-                                        <p className="text-xs font-mono text-slate-400 mt-0.5">Shell-N-Tube · Pune, India[cite: 1]</p>
+                                        <h4 className="text-xl font-bold text-white font-sans">Systems Engineer — Cryogenics (Project Execution Lead)</h4>
+                                        <p className="text-xs font-mono text-slate-400 mt-0.5">Shell-N-Tube · Pune, India</p>
                                     </div>
                                     <ul className="space-y-2.5 text-xs text-slate-400 font-sans max-w-4xl list-none">
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Lead engineering execution of a cryogenic Helium Recovery System for ISRO's Propulsion Complex — overseeing multidisciplinary design, supplier coordination, schedules, risk, and delivery[cite: 1].</li>
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Manage integrated schedules, procurement, and coordination across 20+ suppliers for a US$1.5M program — ensuring on-time long-lead delivery and milestone adherence[cite: 1].</li>
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Own systems engineering activities: requirements definition, equipment selection, design reviews, technical documentation, and interface management for cryogenic process systems[cite: 1].</li>
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Maintain risk registers, monitor technical and procurement risks, and drive mitigation through cross-functional reviews to keep the program on-time and within budget[cite: 1].</li>
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Prepare and review PFDs, P&IDs, equipment specifications, datasheets, and vendor technical evaluations to support execution and procurement[cite: 1].</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Lead engineering execution of a cryogenic Helium Recovery System for ISRO's Propulsion Complex — overseeing multidisciplinary design, supplier coordination, schedules, risk, and delivery.</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Manage integrated schedules, procurement, and coordination across 20+ suppliers for a US$1.5M program — ensuring on-time long-lead delivery and milestone adherence.</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Own systems engineering activities: requirements definition, equipment selection, design reviews, technical documentation, and interface management for cryogenic process systems.</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Maintain risk registers, monitor technical and procurement risks, and drive mitigation through cross-functional reviews to keep the program on-time and within budget.</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Prepare and review PFDs, P&IDs, equipment specifications, datasheets, and vendor technical evaluations to support execution and procurement.</li>
                                     </ul>
                                     <div className="flex gap-2 text-[9px] font-mono text-slate-400 pt-1">
                                         <span className="bg-[#091122] border border-slate-800 px-2 py-0.5">CRYOGENICS</span>
@@ -205,18 +257,17 @@
                                 </div>
                             </div>
 
-                            {/* Role 2 */}
                             <div className="relative pl-12 group">
                                 <div className="absolute left-1.5 top-2 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent rounded-full transition-colors"></div>
                                 <div className="space-y-4">
-                                    <div className="text-[11px] font-mono text-slate-500 tracking-wider">AUG 2024 — JUN 2025[cite: 1]</div>
+                                    <div className="text-[11px] font-mono text-slate-500 tracking-wider">AUG 2024 — JUN 2025</div>
                                     <div>
-                                        <h4 className="text-xl font-bold text-white font-sans">VP Engineering (Program Lead)[cite: 1]</h4>
-                                        <p className="text-xs font-mono text-slate-400 mt-0.5">Abyom SpaceTech & Defence · Hyderabad, India[cite: 1]</p>
+                                        <h4 className="text-xl font-bold text-white font-sans">VP Engineering (Program Lead)</h4>
+                                        <p className="text-xs font-mono text-slate-400 mt-0.5">Abyom SpaceTech & Defence · Hyderabad, India</p>
                                     </div>
                                     <ul className="space-y-2.5 text-xs text-slate-400 font-sans max-w-4xl list-none">
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Led the Reusable Launch Vehicle (RLV) Technology Demonstrator (VTOL) program — directing propulsion, structures, avionics, and ground systems from concept through test readiness[cite: 1].</li>
-                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Managed integrated master schedules, program budgets, and execution — delivering 95% of critical milestones on schedule for a US$250K program[cite: 1].</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Led the Reusable Launch Vehicle (RLV) Technology Demonstrator (VTOL) program — directing propulsion, structures, avionics, and ground systems from concept through test readiness.</li>
+                                        <li className="flex items-start gap-2"><span className="text-cyanAccent font-mono">▪</span> Managed integrated master schedules, program budgets, and execution — delivering 95% of critical milestones on schedule for a US$250K program.</li>
                                     </ul>
                                     <div className="flex gap-2 text-[9px] font-mono text-slate-400 pt-1">
                                         <span className="bg-[#091122] border border-slate-800 px-2 py-0.5">RLV</span>
@@ -225,12 +276,11 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </section>
 
-                    {/* Section 3: Programs & Case Studies Grid */}
-                    <section id="projects" className="py-24 px-6 lg:px-16 border-t border-slate-900 max-w-7xl mx-auto">
+                    {/* Image 2: // 03 · MISSIONS Section Layout */}
+                    <section id="missions" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
                             <div className="lg:col-span-4 space-y-3">
                                 <div className="text-[11px] font-mono text-cyanAccent tracking-widest">// 03 · MISSIONS</div>
@@ -243,71 +293,250 @@
 
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                             {/* Mission Card 1 */}
-                            <div className="lg:col-span-7 bg-[#050C1B]/50 border border-slate-900 p-8 flex flex-col justify-between hover:border-cyanAccent/30 transition-all group relative overflow-hidden">
-                                <div className="space-y-6">
+                            <div className="lg:col-span-7 bg-[#050C1B]/40 border border-slate-900/80 p-6 flex flex-col justify-between hover:border-cyanAccent/30 transition-all group relative min-h-[280px]">
+                                <div className="space-y-4">
                                     <div className="flex justify-between items-center text-[10px] font-mono text-slate-500">
-                                        <span>PROJECT EXECUTION LEAD · 2026[cite: 1]</span>
+                                        <span>PROJECT EXECUTION LEAD · 2026</span>
                                         <Icon name="arrow-up-right" className="w-4 h-4 text-slate-600 group-hover:text-cyanAccent transition-colors" />
                                     </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Cryogenic Helium Recovery System — ISRO Propulsion Complex[cite: 1]</h4>
-                                        <p className="text-xs text-slate-400 font-sans leading-relaxed">Multidisciplinary cryogenic recovery system for ISRO — supplier-driven delivery of a US$1.5M program[cite: 1].</p>
-                                    </div>
+                                    <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Cryogenic Helium Recovery System — ISRO Propulsion Complex</h4>
+                                    <p className="text-xs text-slate-400 font-sans leading-relaxed">Multidisciplinary cryogenic recovery system for ISRO — supplier-driven delivery of a US$1.5M program.</p>
                                 </div>
-                                <div className="mt-12 pt-6 border-t border-slate-900/50 grid grid-cols-3 gap-4 text-left font-mono">
-                                    <div>
-                                        <div className="text-[9px] text-slate-600">BUDGET</div>
-                                        <div className="text-sm font-bold text-white">$1.5M[cite: 1]</div>
+                                <div>
+                                    <div className="mt-8 pt-4 border-t border-slate-900 grid grid-cols-3 gap-4 text-left font-mono">
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">BUDGET</div>
+                                            <div className="text-xs font-bold text-slate-200">$1.5M</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">SUPPLIERS</div>
+                                            <div className="text-xs font-bold text-slate-200">20+</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">DOMAIN</div>
+                                            <div className="text-xs font-bold text-slate-200">Cryogenics</div>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <div className="text-[9px] text-slate-600">SUPPLIERS</div>
-                                        <div className="text-sm font-bold text-white">20+[cite: 1]</div>
+                                    <div className="flex gap-1.5 mt-4 text-[8px] font-mono text-slate-500">
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">ISRO</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">CRYOGENICS</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">P&IDS</span>
                                     </div>
-                                    <div>
-                                        <div className="text-[9px] text-slate-600">DOMAIN</div>
-                                        <div className="text-sm font-bold text-white">Cryogenics[cite: 1]</div>
-                                    </div>
-                                </div>
-                                <div className="flex gap-1.5 mt-4 text-[8px] font-mono text-slate-400">
-                                    <span className="bg-[#030712] border border-slate-800 px-1.5 py-0.5">ISRO</span>
-                                    <span className="bg-[#030712] border border-slate-800 px-1.5 py-0.5">CRYOGENICS</span>
-                                    <span className="bg-[#030712] border border-slate-800 px-1.5 py-0.5">P&IDS</span>
                                 </div>
                             </div>
 
                             {/* Mission Card 2 */}
-                            <div className="lg:col-span-5 bg-[#050C1B]/50 border border-slate-900 p-8 flex flex-col justify-between hover:border-cyanAccent/30 transition-all group relative overflow-hidden">
-                                <div className="space-y-6">
+                            <div className="lg:col-span-5 bg-[#050C1B]/40 border border-slate-900/80 p-6 flex flex-col justify-between hover:border-cyanAccent/30 transition-all group relative min-h-[280px]">
+                                <div className="space-y-4">
                                     <div className="flex justify-between items-center text-[10px] font-mono text-slate-500">
-                                        <span>VP ENGINEERING / PROGRAM LEAD · 2024-25[cite: 1]</span>
+                                        <span>VP ENGINEERING / PROGRAM LEAD · 2024-25</span>
                                         <Icon name="arrow-up-right" className="w-4 h-4 text-slate-600 group-hover:text-cyanAccent transition-colors" />
                                     </div>
-                                    <div className="space-y-2">
-                                        <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Reusable Launch Vehicle — VTOL Technology Demonstrator[cite: 1]</h4>
-                                        <p className="text-xs text-slate-400 font-sans leading-relaxed">Concept-to-test-readiness for an RLV VTOL demonstrator[cite: 1].</p>
+                                    <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Reusable Launch Vehicle — VTOL Technology Demonstrator</h4>
+                                    <p className="text-xs text-slate-400 font-sans leading-relaxed">Concept-to-test-readiness for an RLV VTOL demonstrator.</p>
+                                </div>
+                                <div>
+                                    <div className="mt-8 pt-4 border-t border-slate-900 grid grid-cols-2 gap-4 text-left font-mono">
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">MILESTONES</div>
+                                            <div className="text-xs font-bold text-slate-200">95%</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">BUDGET</div>
+                                            <div className="text-xs font-bold text-slate-200">$250K</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1.5 mt-4 text-[8px] font-mono text-slate-500">
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">RLV</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">VTOL</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">MBSE</span>
                                     </div>
                                 </div>
-                                <div className="mt-12 pt-6 border-t border-slate-900/50 grid grid-cols-2 gap-4 text-left font-mono">
-                                    <div>
-                                        <div className="text-[9px] text-slate-600">MILESTONES</div>
-                                        <div className="text-sm font-bold text-white">95%[cite: 1]</div>
+                            </div>
+
+                            {/* Mission Card 3 */}
+                            <div className="lg:col-span-5 bg-[#050C1B]/40 border border-slate-900/80 p-6 flex flex-col justify-between hover:border-cyanAccent/30 transition-all group relative min-h-[280px]">
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center text-[10px] font-mono text-slate-500">
+                                        <span>VP EXTERNAL OPERATIONS · 2023-24</span>
+                                        <Icon name="arrow-up-right" className="w-4 h-4 text-slate-600 group-hover:text-cyanAccent transition-colors" />
                                     </div>
-                                    <div>
-                                        <div className="text-[9px] text-slate-600">BUDGET</div>
-                                        <div className="text-sm font-bold text-white">$250K[cite: 1]</div>
+                                    <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Mobile Rocket Engine Test Facility — India's First</h4>
+                                    <p className="text-xs text-slate-400 font-sans leading-relaxed">End-to-end delivery: site selection through commissioning, 10% ahead of schedule.</p>
+                                </div>
+                                <div>
+                                    <div className="mt-8 pt-4 border-t border-slate-900 grid grid-cols-3 gap-4 text-left font-mono">
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">SCHEDULE</div>
+                                            <div className="text-xs font-bold text-slate-200">-10%</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">SAVINGS</div>
+                                            <div className="text-xs font-bold text-slate-200">$25K</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">TEST CAMPAIGNS</div>
+                                            <div className="text-xs font-bold text-slate-200">150+</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1.5 mt-4 text-[8px] font-mono text-slate-500">
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">TEST FACILITY</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">HSE</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">OPS</span>
                                     </div>
                                 </div>
-                                <div className="flex gap-1.5 mt-4 text-[8px] font-mono text-slate-400">
-                                    <span className="bg-[#030712] border border-slate-800 px-1.5 py-0.5">RLV</span>
-                                    <span className="bg-[#030712] border border-slate-800 px-1.5 py-0.5">VTOL</span>
-                                    <span className="bg-[#030712] border border-slate-800 px-1.5 py-0.5">MBSE</span>
+                            </div>
+
+                            {/* Mission Card 4 */}
+                            <div className="lg:col-span-7 bg-[#050C1B]/40 border border-slate-900/80 p-6 flex flex-col justify-between hover:border-cyanAccent/30 transition-all group relative min-h-[280px]">
+                                <div className="space-y-4">
+                                    <div className="flex justify-between items-center text-[10px] font-mono text-slate-500">
+                                        <span>PROPULSION ENGINEER · 2022-23</span>
+                                        <Icon name="arrow-up-right" className="w-4 h-4 text-slate-600 group-hover:text-cyanAccent transition-colors" />
+                                    </div>
+                                    <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Indigenous Liquid Propulsion Engine</h4>
+                                    <p className="text-xs text-slate-400 font-sans leading-relaxed">Torch-igniter + pintle-injector engine — trade studies to qualification testing.</p>
+                                </div>
+                                <div>
+                                    <div className="mt-8 pt-4 border-t border-slate-900 grid grid-cols-2 gap-4 text-left font-mono">
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">QUAL TESTS</div>
+                                            <div className="text-xs font-bold text-slate-200">20+</div>
+                                        </div>
+                                        <div>
+                                            <div className="text-[9px] text-slate-600">FIRSTS</div>
+                                            <div className="text-xs font-bold text-slate-200">India</div>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-1.5 mt-4 text-[8px] font-mono text-slate-500">
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">PROPULSION</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">INJECTOR</span>
+                                        <span className="bg-[#030712] border border-slate-900 px-1.5 py-0.5">IGNITER</span>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Section 4: Contact Form Setup */}
-                    <section id="contact" className="py-24 px-6 lg:px-16 border-t border-slate-900 max-w-7xl mx-auto">
+                    {/* Image 3: // 04 · TOOLKIT Section Layout */}
+                    <section id="toolkit" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-16">
+                            <div className="lg:col-span-4 space-y-3">
+                                <div className="text-[11px] font-mono text-cyanAccent tracking-widest">// 04 · TOOLKIT</div>
+                                <h3 className="text-4xl font-bold text-white tracking-tight font-sans">Skills & certifications.</h3>
+                            </div>
+                            <div className="lg:col-span-8 flex items-end">
+                                <p className="text-sm text-slate-400 max-w-xl leading-relaxed">What I bring to the console — methodology, tools, and formal credentials.</p>
+                            </div>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                            {/* Skills Category Matrix Columns */}
+                            <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-xs">
+                                <div className="space-y-4">
+                                    <div className="text-cyanAccent tracking-wider text-[11px] uppercase border-b border-slate-900 pb-2">PROJECT MANAGEMENT</div>
+                                    <ul className="space-y-3 text-slate-400 list-none pl-0">
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Project Planning & Execution</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Cost Forecasting (EAC/ETC)</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Project Controlling</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Contract & Proposal Support</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Scheduling & Milestone Mgmt</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Resource & Vendor Management</li>
+                                    </ul>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="text-cyanAccent tracking-wider text-[11px] uppercase border-b border-slate-900 pb-2">SYSTEMS ENGINEERING</div>
+                                    <ul className="space-y-3 text-slate-400 list-none pl-0">
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Requirements Engineering</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> MBSE (SysML / Cameo)</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> V&V Planning</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Interface Control (ICDs)</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Risk Management</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Configuration Management</li>
+                                    </ul>
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="text-cyanAccent tracking-wider text-[11px] uppercase border-b border-slate-900 pb-2">TOOLS & STANDARDS</div>
+                                    <ul className="space-y-3 text-slate-400 list-none pl-0">
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> JIRA</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Cameo Systems Modeler</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> Confluence</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> ECSS</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> ISO 15288</li>
+                                        <li className="flex items-center gap-2"><span className="text-cyanAccent">▪</span> KPIs & NCR Resolution</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* Certifications Stack List */}
+                            <div className="lg:col-span-5 border border-slate-900/60 bg-[#040915] divide-y divide-slate-900/60 font-mono text-xs">
+                                <div className="p-4 flex items-start gap-4">
+                                    <div className="mt-1 p-1.5 border border-cyanAccent/20 text-cyanAccent bg-cyanAccent/5"><Icon name="shield-check" className="w-4 h-4" /></div>
+                                    <div>
+                                        <h4 className="font-bold text-white font-sans text-sm">Project Management Professional (PMP)</h4>
+                                        <p className="text-slate-500 text-[10px] uppercase mt-0.5">PMI · TARGET SEP 2026</p>
+                                    </div>
+                                </div>
+                                <div className="p-4 flex items-start gap-4">
+                                    <div className="mt-1 p-1.5 border border-cyanAccent/20 text-cyanAccent bg-cyanAccent/5"><Icon name="shield-check" className="w-4 h-4" /></div>
+                                    <div>
+                                        <h4 className="font-bold text-white font-sans text-sm">Space Mission Design & Operations</h4>
+                                        <p className="text-slate-500 text-[10px] uppercase mt-0.5">École Polytechnique Fédérale de Lausanne · 2019</p>
+                                    </div>
+                                </div>
+                                <div className="p-4 flex items-start gap-4">
+                                    <div className="mt-1 p-1.5 border border-cyanAccent/20 text-cyanAccent bg-cyanAccent/5"><Icon name="shield-check" className="w-4 h-4" /></div>
+                                    <div>
+                                        <h4 className="font-bold text-white font-sans text-sm">Systems Engineering with SysML</h4>
+                                        <p className="text-slate-500 text-[10px] uppercase mt-0.5">Udemy · 2025</p>
+                                    </div>
+                                    </div>
+                                <div className="p-4 flex items-start gap-4">
+                                    <div className="mt-1 p-1.5 border border-cyanAccent/20 text-cyanAccent bg-cyanAccent/5"><Icon name="shield-check" className="w-4 h-4" /></div>
+                                    <div>
+                                        <h4 className="font-bold text-white font-sans text-sm">IREB Foundations</h4>
+                                        <p className="text-slate-500 text-[10px] uppercase mt-0.5">Udemy · 2025</p>
+                                    </div>
+                                </div>
+                                <div className="p-4 flex items-start gap-4">
+                                    <div className="mt-1 p-1.5 border border-cyanAccent/20 text-cyanAccent bg-cyanAccent/5"><Icon name="shield-check" className="w-4 h-4" /></div>
+                                    <div>
+                                        <h4 className="font-bold text-white font-sans text-sm">Project Management Foundations</h4>
+                                        <p className="text-slate-500 text-[10px] uppercase mt-0.5">Udemy · 2025</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Image 4: // 05 · TRAINING Section Layout */}
+                    <section id="training" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
+                        <div className="mb-12">
+                            <div className="text-[11px] font-mono text-cyanAccent tracking-widest mb-2">// 05 · TRAINING</div>
+                            <h3 className="text-4xl font-bold text-white tracking-tight font-sans">Education.</h3>
+                        </div>
+
+                        <div className="grid grid-cols-1 lg:grid-cols-12 border border-slate-900/60 bg-slate-950/40">
+                            <div className="lg:col-span-6 p-8 space-y-4">
+                                <div className="w-8 h-8 border border-cyanAccent/20 bg-cyanAccent/5 flex items-center justify-center text-cyanAccent">
+                                    <Icon name="graduation-cap" className="w-4 h-4" />
+                                </div>
+                                <div className="space-y-1">
+                                    <h4 className="text-xl font-bold text-white font-sans">B.Tech, Aeronautical Engineering</h4>
+                                    <p className="text-xs font-mono text-cyanAccent uppercase tracking-wide">Jawaharlal Nehru Technological University Hyderabad (JNTUH)</p>
+                                </div>
+                                <p className="text-xs text-slate-400 font-sans leading-relaxed pt-2">
+                                    Focus: aircraft & rocket propulsion, fluid dynamics, thermodynamics, flight mechanics & stability, CAD/CAM. Electives in Project Management Fundamentals and Business Economics & Financial Analysis for Engineers.
+                                </p>
+                            </div>
+                            <div className="lg:col-span-6 bg-[#040915] border-t lg:border-t-0 lg:border-l border-slate-900/60 terminal-grid min-h-[180px]" />
+                        </div>
+                    </section>
+
+                    {/* Image 5: // 08 · UPLINK Section Layout */}
+                    <section id="contact" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
                             <div className="lg:col-span-4 space-y-2">
                                 <div className="text-[11px] font-mono text-cyanAccent tracking-widest">// 08 · UPLINK</div>
@@ -321,20 +550,20 @@
                         </div>
 
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                            {/* Left Meta Information Column */}
+                            {/* Meta Informational Block Group Left */}
                             <div className="lg:col-span-4 space-y-4">
                                 <div className="border border-slate-900 bg-[#050C1B]/20 p-4 font-mono space-y-2 relative">
                                     <div className="text-[9px] text-slate-600 tracking-wider uppercase">DIRECT CHANNEL</div>
                                     <div className="space-y-1.5 text-xs text-slate-300">
-                                        <p className="flex items-center gap-2"><Icon name="mail" className="w-3.5 h-3.5 text-cyanAccent" /> pruthvishankarpulijala@gmail.com[cite: 1]</p>
-                                        <p className="flex items-center gap-2"><Icon name="phone" className="w-3.5 h-3.5 text-cyanAccent" /> +91 63045 72330[cite: 1]</p>
-                                        <p className="flex items-center gap-2"><Icon name="linkedin" className="w-3.5 h-3.5 text-cyanAccent" /> LinkedIn · /pruthvishankar[cite: 1]</p>
+                                        <p className="flex items-center gap-2"><Icon name="mail" className="w-3.5 h-3.5 text-cyanAccent" /> pruthvishankarpulijala@gmail.com</p>
+                                        <p className="flex items-center gap-2"><Icon name="phone" className="w-3.5 h-3.5 text-cyanAccent" /> +91 63045 72330</p>
+                                        <p className="flex items-center gap-2"><Icon name="linkedin" className="w-3.5 h-3.5 text-cyanAccent" /> LinkedIn · /pruthvishankar</p>
                                     </div>
                                 </div>
 
                                 <div className="border border-slate-900 bg-[#050C1B]/20 p-4 font-mono space-y-1">
                                     <div className="text-[9px] text-slate-600 tracking-wider uppercase">BASE OF OPERATIONS</div>
-                                    <p className="text-xs text-slate-300 flex items-center gap-2"><Icon name="map-pin" className="w-3.5 h-3.5 text-cyanAccent" /> Pune, India[cite: 1]</p>
+                                    <p className="text-xs text-slate-300 flex items-center gap-2"><Icon name="map-pin" className="w-3.5 h-3.5 text-cyanAccent" /> Pune, India</p>
                                 </div>
 
                                 <div className="border border-slate-900 bg-[#050C1B]/20 p-4 font-mono space-y-1">
@@ -343,8 +572,8 @@
                                 </div>
                             </div>
 
-                            {/* Right Grid Interactive Terminal Form */}
-                            <div className="lg:col-span-8 border border-slate-900 bg-[#040814] p-6 lg:p-8 space-y-6">
+                            {/* Form Box Console Right */}
+                            <div className="lg:col-span-8 border border-slate-900/80 bg-[#040814] p-6 lg:p-8 space-y-6">
                                 <div className="text-[10px] font-mono text-slate-500">// NEW_MESSAGE.TXT</div>
                                 
                                 <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -377,15 +606,14 @@
 
                                 {status && <div className="mt-4 p-3 bg-[#050C1B] border border-cyanAccent/30 text-[11px] font-mono text-cyanAccent">{status}</div>}
 
-                                {/* Local State Buffer Data Monitor Logs */}
                                 {dbSubmissions.length > 0 && (
                                     <div className="mt-6 pt-6 border-t border-slate-900 space-y-2">
-                                        <div className="text-[9px] font-mono text-slate-600 uppercase tracking-widest">LOCAL STATE DB COMMIT LOGS:</div>
+                                        <div className="text-[9px] font-mono text-slate-600 uppercase tracking-widest">LOCAL DATA LOG COMMITS:</div>
                                         <div className="max-h-40 overflow-y-auto space-y-2 pr-2">
                                             {dbSubmissions.map(sub => (
                                                 <div key={sub.id} className="p-2.5 bg-[#030712] border border-slate-900 text-[10px] font-mono text-slate-400">
                                                     <div className="text-cyanAccent">TX_ID: {sub.id} @ {sub.timestamp}</div>
-                                                    <div>SENDER: {sub.name} ({sub.email})</div>
+                                                    <div>FROM: {sub.name} // SUBJECT: {sub.subject || 'NONE'}</div>
                                                     <div className="text-slate-300 italic">" {sub.message} "</div>
                                                 </div>
                                             ))}
@@ -396,8 +624,41 @@
                         </div>
                     </section>
 
-                    <footer className="border-t border-slate-900 py-8 text-center text-[10px] font-mono text-slate-600">
-                        <p>© 2026 PRUTHVI SHANKAR PULIJALA // AEROSPACE SYSTEMS PORTFOLIO DEPLOYMENT MATRIX</p>
+                    {/* Image 6: // END OF TRANSMISSION Footer Panel Layout */}
+                    <footer className="border-t border-slate-900/60 pt-16 pb-8 px-6 lg:px-16 max-w-7xl mx-auto space-y-12">
+                        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+                            <div className="md:col-span-6 space-y-3">
+                                <div className="text-[11px] font-mono text-cyanAccent tracking-widest">// END OF TRANSMISSION</div>
+                                <h3 className="text-3xl font-bold text-white font-sans tracking-tight">Pruthvi Shankar Pulijala<span className="text-cyanAccent">.</span></h3>
+                                <p className="text-[10px] font-mono tracking-widest text-slate-500 uppercase">PROJECT & SYSTEMS ENGINEER</p>
+                            </div>
+                            
+                            <div className="md:col-span-3 space-y-3 font-mono text-xs">
+                                <div className="text-slate-600 text-[10px] tracking-wider uppercase">NAVIGATE</div>
+                                <ul className="space-y-2 text-slate-400 font-sans">
+                                    <li><a href="#profile" className="hover:text-cyanAccent transition-colors">About</a></li>
+                                    <li><a href="#experience" className="hover:text-cyanAccent transition-colors">Experience</a></li>
+                                    <li><a href="#missions" className="hover:text-cyanAccent transition-colors">Projects</a></li>
+                                    <li><a href="#toolkit" className="hover:text-cyanAccent transition-colors">Skills</a></li>
+                                </ul>
+                            </div>
+
+                            <div className="md:col-span-3 space-y-3 font-mono text-xs">
+                                <div className="text-slate-600 text-[10px] tracking-wider uppercase">MORE</div>
+                                <ul className="space-y-2 text-slate-400 font-sans">
+                                    <li><a href="#training" className="hover:text-cyanAccent transition-colors">Education</a></li>
+                                    <li><a href="#contact" className="hover:text-cyanAccent transition-colors">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div className="pt-8 border-t border-slate-900/40 flex flex-wrap justify-between items-center text-[10px] font-mono text-slate-600 gap-4">
+                            <div>© 2026 · PRUTHVI SHANKAR PULIJALA · ALL SYSTEMS NOMINAL.</div>
+                            <div className="flex items-center gap-2">
+                                <span className="inline-block w-2 h-2 bg-emerald-500 rounded-none animate-pulse"></span>
+                                SIGNAL · STABLE
+                            </div>
+                        </div>
                     </footer>
                 </div>
             );
