@@ -574,7 +574,7 @@
                         </div>
                     </section>
 
-                    {/* --- SECTION // 06 · CONTACT Clean 2-Split Array Architecture Update Applied --- */}
+                   {/* --- SECTION // 06 · CONTACT INTERACTIVE TWIN-BLOCK ARRAY --- */}
                     <section id="contact" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
                             <div className="lg:col-span-4 space-y-2">
@@ -583,85 +583,114 @@
                             </div>
                             <div className="lg:col-span-8 flex items-end">
                                 <p className="text-sm text-slate-300 font-sans max-w-xl leading-relaxed">
-                                    Open to program leadership, systems engineering roles, and technical advisory. For CV requests, please include company and role context.
+                                    Click the interactive communication terminals below to route your signal directly or reveal localized secure channel parameters.
                                 </p>
                             </div>
                         </div>
 
-                        {/* Clean two-split array updates implemented directly below */}
-                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                            {/* Left Split Card Component Element Array */}
-                            <div className="space-y-4">
-                                <div className="border border-slate-900 bg-[#050C1B]/40 p-6 lg:p-8 font-mono space-y-6">
-                                    <div className="text-xs text-slate-500 tracking-wider uppercase border-b border-slate-900/60 pb-2">// DIRECT UPLINK CHANNELS</div>
-                                    
-                                    <div className="space-y-4 text-sm text-slate-200">
-                                        <div className="p-3 bg-[#030712]/50 border border-slate-900/80 flex items-center gap-3">
-                                            <Icon name="mail" className="w-5 h-5 text-cyanAccent" /> 
-                                            <div>
-                                                <div className="text-[10px] text-slate-500">COMMUNICATION RADAR</div>
-                                                <a href="mailto:pruthvishankarpulijala@gmail.com" className="hover:text-cyanAccent transition-colors">pruthvishankarpulijala@gmail.com</a>
-                                            </div>
-                                        </div>
-                                        
-                                        <div className="p-3 bg-[#030712]/50 border border-slate-900/80 flex items-center gap-3">
-                                            <Icon name="phone" className="w-5 h-5 text-cyanAccent" /> 
-                                            <div>
-                                                <div className="text-[10px] text-slate-500">SECURE SIGNAL LINK</div>
-                                                <a href="tel:+916304572330" className="hover:text-cyanAccent transition-colors">+91 63045 72330</a>
-                                            </div>
-                                        </div>
-
-                                        <div className="p-3 bg-[#030712]/50 border border-slate-900/80 flex items-center gap-3">
-                                            <Icon name="linkedin" className="w-5 h-5 text-cyanAccent" /> 
-                                            <div>
-                                                <div className="text-[10px] text-slate-500">EXTERNAL MATRIX INDEX</div>
-                                                <a href="https://linkedin.com/in/pruthvishankar" target="_blank" rel="noopener noreferrer" className="hover:text-cyanAccent transition-colors">linkedin.com/in/pruthvishankar</a>
-                                            </div>
-                                        </div>
+                        {/* Interactive Twin Blocks Array */}
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                            
+                            {/* Block 01: LinkedIn Route Redirect */}
+                            <a 
+                                href="https://linkedin.com/in/pruthvishankar" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="group relative border border-slate-900 bg-[#050C1B]/40 hover:bg-[#071329]/50 hover:border-cyanAccent/40 p-8 transition-all duration-300 flex flex-col justify-between min-h-[180px]"
+                            >
+                                <div className="flex justify-between items-start">
+                                    <div className="p-3 bg-cyanAccent/5 border border-cyanAccent/20 text-cyanAccent group-hover:bg-cyanAccent/10 group-hover:scale-105 transition-all">
+                                        <Icon name="linkedin" className="w-6 h-6" />
                                     </div>
+                                    <Icon name="external-link" className="w-4 h-4 text-slate-600 group-hover:text-cyanAccent transition-colors" />
                                 </div>
+                                <div className="space-y-1 mt-4">
+                                    <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">// ROUTE EXTERNAL MATRIX</div>
+                                    <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">LinkedIn Profile Uplink</h4>
+                                    <p className="text-xs text-slate-400 font-sans">Open external secure browser node to synchronize enterprise network connections.</p>
+                                </div>
+                            </a>
 
-                                <div className="border border-slate-900 bg-[#050C1B]/20 p-5 font-mono">
-                                    <div className="text-[10px] text-slate-500 tracking-wider uppercase mb-1">BASE OF OPERATIONS</div>
-                                    <p className="text-sm text-slate-200 flex items-center gap-2"><Icon name="map-pin" className="w-4 h-4 text-cyanAccent" /> Pune, India</p>
+                            {/* Block 02: Mail Matrix Drawer Pullout */}
+                            <div 
+                                onClick={() => {
+                                    const drawer = document.getElementById('mail-pullout-drawer');
+                                    if(drawer) drawer.classList.toggle('hidden');
+                                }}
+                                className="group relative border border-slate-900 bg-[#050C1B]/40 hover:bg-[#071329]/50 hover:border-cyanAccent/40 p-8 transition-all duration-300 flex flex-col justify-between min-h-[180px] cursor-pointer"
+                            >
+                                <div className="flex justify-between items-start">
+                                    <div className="p-3 bg-cyanAccent/5 border border-cyanAccent/20 text-cyanAccent group-hover:bg-cyanAccent/10 group-hover:scale-105 transition-all">
+                                        <Icon name="mail" className="w-6 h-6" />
+                                    </div>
+                                    <Icon name="chevrons-down" className="w-4 h-4 text-slate-600 group-hover:text-cyanAccent animate-pulse" />
+                                </div>
+                                <div className="space-y-1 mt-4">
+                                    <div className="text-[10px] font-mono text-cyanAccent text-glow tracking-widest">// DECRYPT LOCAL STORAGE</div>
+                                    <h4 className="text-xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Secure Mail Parameters</h4>
+                                    <p className="text-xs text-slate-400 font-sans">Click to expand localized terminal buffer cards containing target mailing vectors.</p>
                                 </div>
                             </div>
+                        </div>
 
-                            {/* Right Split Card Component Element Array */}
-                            <div className="border border-slate-900/80 bg-[#040814] p-6 lg:p-8 space-y-6">
-                                <div className="text-xs font-mono text-slate-500">// NEW_MESSAGE.TXT</div>
-                                
-                                <form onSubmit={handleFormSubmit} className="space-y-6">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">FULL NAME</label>
-                                            <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
-                                        </div>
-                                        <div className="space-y-2">
-                                            <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">EMAIL</label>
-                                            <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="you@company.com" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
-                                        </div>
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">SUBJECT</label>
-                                        <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} placeholder="Optional mission parameters" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">MESSAGE</label>
-                                        <textarea rows="4" name="message" value={formData.message} onChange={handleInputChange} placeholder="Brief the mission..." className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-sans" />
-                                    </div>
-
-                                    <div className="flex flex-wrap justify-between items-center gap-4 pt-4 border-t border-slate-900">
-                                        <span className="text-xs font-mono text-slate-500">Submissions logged locally.</span>
-                                        <button type="submit" className="bg-cyanAccent text-black font-mono font-bold text-xs tracking-widest px-6 py-3.5 hover:bg-white transition-colors flex items-center gap-2 uppercase">
-                                            TRANSMIT <Icon name="send" className="w-4 h-4" />
-                                        </button>
-                                    </div>
-                                </form>
-
-                                {status && <div className="mt-4 p-3 bg-[#050C1B] border border-cyanAccent/30 text-xs font-mono text-cyanAccent">{status}</div>}
+                        {/* Localized Mail Target Card Pullout Module */}
+                        <div id="mail-pullout-drawer" className="hidden transition-all duration-500 ease-in-out mb-8">
+                            <div className="border border-cyanAccent/20 bg-[#040A18] p-6 font-mono grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                                <div className="space-y-2">
+                                    <div className="text-[10px] text-cyanAccent tracking-wider uppercase">// PRIMAL DIRECT ROUTE</div>
+                                    <div className="text-lg font-bold text-white font-sans selection:bg-cyanAccent/30">pruthvishankarpulijala@gmail.com</div>
+                                    <p className="text-xs text-slate-500 font-sans">Primary channel monitored for engineering execution briefs and RFPs.</p>
+                                </div>
+                                <div className="flex md:justify-end gap-3">
+                                    <a href="mailto:pruthvishankarpulijala@gmail.com" className="bg-cyanAccent text-black font-bold text-xs tracking-widest px-5 py-3 hover:bg-white transition-colors flex items-center gap-2">
+                                        LAUNCH NATIVE MAIL <Icon name="mail-forward" className="w-3.5 h-3.5" />
+                                    </a>
+                                    <button 
+                                        onClick={() => {
+                                            navigator.clipboard.writeText('pruthvishankarpulijala@gmail.com');
+                                            alert('Signal vector copied to system clipboard.');
+                                        }}
+                                        className="border border-slate-800 text-slate-300 hover:text-white hover:border-slate-700 text-xs tracking-widest px-4 py-3 transition-colors"
+                                    >
+                                        COPY BUFFER
+                                    </button>
+                                </div>
                             </div>
+                        </div>
+
+                        {/* Interactive Console Transmission Deck Form Component */}
+                        <div className="border border-slate-900/80 bg-[#040814] p-6 lg:p-8 space-y-6">
+                            <div className="text-xs font-mono text-slate-500">// ASYNCHRONOUS_TRANSMISSION_DECK.TXT</div>
+                            
+                            <form onSubmit={handleFormSubmit} className="space-y-6">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">FULL NAME</label>
+                                        <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
+                                    </div>
+                                    <div className="space-y-2">
+                                        <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">EMAIL</label>
+                                        <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="you@company.com" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
+                                    </div>
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">SUBJECT</label>
+                                    <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} placeholder="Optional mission parameters" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
+                                </div>
+                                <div className="space-y-2">
+                                    <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">MESSAGE</label>
+                                    <textarea rows="4" name="message" value={formData.message} onChange={handleInputChange} placeholder="Brief the mission..." className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-sans" />
+                                </div>
+
+                                <div className="flex flex-wrap justify-between items-center gap-4 pt-4 border-t border-slate-900">
+                                    <span className="text-xs font-mono text-slate-500">Submissions logged locally.</span>
+                                    <button type="submit" className="bg-cyanAccent text-black font-mono font-bold text-xs tracking-widest px-6 py-3.5 hover:bg-white transition-colors flex items-center gap-2 uppercase">
+                                        TRANSMIT <Icon name="send" className="w-4 h-4" />
+                                    </button>
+                                </div>
+                            </form>
+
+                            {status && <div className="mt-4 p-3 bg-[#050C1B] border border-cyanAccent/30 text-xs font-mono text-cyanAccent">{status}</div>}
                         </div>
                     </section>
 
