@@ -1,67 +1,49 @@
 <!DOCTYPE html>
-<!-- Specifies that this document is an HTML5 document -->
 <html lang="en">
 <head>
-    <!-- Sets the character encoding to UTF-8 (supports almost all languages and symbols) -->
     <meta charset="UTF-8">
-    <!-- Ensures proper responsive rendering on mobile phones and tablets -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- The title displayed on the browser tab. CHANGE THIS text to whatever you like! -->
     <title>Pruthvi Shankar Pulijala | Project & Systems Engineer</title>
     
-    <!-- Tailwind CSS Engine: Loads the utility-first CSS framework from a CDN -->
+    <!-- Tailwind CSS Engine -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        // Custom configuration configuration for Tailwind CSS utilities
         tailwind.config = {
             theme: {
                 extend: {
-                    // Custom color palettes you can use across your site (e.g., text-cyanAccent, bg-spaceBg)
                     colors: {
-                        spaceBg: '#030712',    // Ultra-dark background tone
-                        cyanAccent: '#00F0FF', // Cyberpunk electric cyan color code
+                        spaceBg: '#030712',    
+                        cyanAccent: '#00F0FF', 
                     },
-                    // Mapping standard font classes to loaded Google Fonts
                     fontFamily: {
-                        mono: ['JetBrains Mono', 'Menlo', 'monospace'], // For engineering/technical labels
-                        sans: ['Inter', 'sans-serif'],                  // For clean body text and titles
+                        mono: ['JetBrains Mono', 'Menlo', 'monospace'], 
+                        sans: ['Inter', 'sans-serif'],                  
                     }
                 }
             }
         }
     </script>
 
-    <!-- React 18: Core library for building programmatic modern user interfaces -->
+    <!-- React 18, DOM, Babel & Icons -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <!-- React DOM: Allows React to render elements directly into the HTML document page -->
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <!-- Babel standalone compiler: Converts JSX code on-the-fly inside the browser -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-    <!-- Lucide Icons: Library used for displaying modern vector icons on the page -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Import clean digital typography sets directly from Google Fonts */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&family=JetBrains+Mono:wght@300;400;500;700&display=swap');
         
         body {
-            /* Sets the fallback background hex color if assets do not load */
             background-color: #040814;
-            /* Sets the default text color to a clean, readable neutral grey */
             color: #94A3B8;
-            /* Creates a custom subtle technical grid background using CSS gradient lines */
             background-image: 
               linear-gradient(to right, rgba(0, 240, 255, 0.02) 1px, transparent 1px),
               linear-gradient(to bottom, rgba(0, 240, 255, 0.02) 1px, transparent 1px);
-            /* Grid square dimensions. Increase this number (e.g., 80px) to make grid blocks larger */
             background-size: 60px 60px;
         }
-        /* Custom neon glowing text filter utility class */
         .text-glow {
             text-shadow: 0 0 10px rgba(0, 240, 255, 0.3);
         }
-        /* Subtle technical dot matrix alignment grid helper */
         .terminal-grid {
             background-image: radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
             background-size: 20px 20px;
@@ -70,38 +52,27 @@
 </head>
 <body class="font-sans antialiased">
 
-    <!-- The target container where React will inject and paint the compiled dashboard view -->
     <div id="root"></div>
 
-    <!-- Script block containing our client interface logic parsed via Babel -->
     <script type="text/babel">
-        // Extract hooks from the React core library package
         const { useState, useEffect } = React;
 
-        // Custom modular component to render Lucide SVG vector shapes dynamically
         function Icon({ name, className }) {
             useEffect(() => {
-                // Whenever the icon changes, trigger the global lucide parser to render the SVG elements
                 if (window.lucide) window.lucide.createIcons();
             }, [name]);
             return <i data-lucide={name} className={className}></i>;
         }
 
-        // Main Application architecture wrapper component
         function App() {
-            // State hook to store form submission objects inside the browser's local memory runtime buffer
             const [dbSubmissions, setDbSubmissions] = useState([]);
-            // State hook tracking the current data parameters entered in the contact form inputs
             const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
-            // State hook to handle success or error printouts beneath the interactive submit button
             const [status, setStatus] = useState('');
 
-            // Automatically updates the formData state tracker whenever a user types into any form input field
             const handleInputChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
-            // Processes the contact console form submission event
             const handleFormSubmit = (e) => {
-                e.preventDefault(); // Prevents the browser from performing a hard page reload on submit
+                e.preventDefault(); 
                 if(!formData.name || !formData.email || !formData.message) {
                     setStatus('ERROR: Required transmission parameters missing.');
                     return;
@@ -156,22 +127,22 @@
                                 <span>Pune, India</span>
                             </div>
                             
-                            {/* Core Focus Parameter Matrix Grid - SCALED UP FONT SIZES FOR MAXIMUM LEGIBILITY */}
+                            {/* Focus highlights color change update applied */}
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-900 border border-slate-900/60 mt-12">
-                                <div className="bg-[#050B18] p-5 font-mono">
-                                    <div className="text-[10px] text-slate-500 mb-1.5 tracking-wider">FOCUS 01</div>
+                                <div className="bg-[#050B18] p-5 font-mono group hover:bg-[#071124] transition-colors border border-transparent hover:border-cyanAccent/20">
+                                    <div className="text-[10px] text-cyanAccent tracking-wider font-bold text-glow mb-1.5">FOCUS 01</div>
                                     <div className="text-sm text-slate-100 font-sans font-semibold">Propulsion & Cryogenic Systems</div>
                                 </div>
-                                <div className="bg-[#050B18] p-5 font-mono">
-                                    <div className="text-[10px] text-slate-500 mb-1.5 tracking-wider">FOCUS 02</div>
+                                <div className="bg-[#050B18] p-5 font-mono group hover:bg-[#071124] transition-colors border border-transparent hover:border-cyanAccent/20">
+                                    <div className="text-[10px] text-cyanAccent tracking-wider font-bold text-glow mb-1.5">FOCUS 02</div>
                                     <div className="text-sm text-slate-100 font-sans font-semibold">Program & Risk Management</div>
                                 </div>
-                                <div className="bg-[#050B18] p-5 font-mono">
-                                    <div className="text-[10px] text-slate-500 mb-1.5 tracking-wider">FOCUS 03</div>
+                                <div className="bg-[#050B18] p-5 font-mono group hover:bg-[#071124] transition-colors border border-transparent hover:border-cyanAccent/20">
+                                    <div className="text-[10px] text-cyanAccent tracking-wider font-bold text-glow mb-1.5">FOCUS 03</div>
                                     <div className="text-sm text-slate-100 font-sans font-semibold">Requirements & V&V</div>
                                 </div>
-                                <div className="bg-[#050B18] p-5 font-mono">
-                                    <div className="text-[10px] text-slate-500 mb-1.5 tracking-wider">FOCUS 04</div>
+                                <div className="bg-[#050B18] p-5 font-mono group hover:bg-[#071124] transition-colors border border-transparent hover:border-cyanAccent/20">
+                                    <div className="text-[10px] text-cyanAccent tracking-wider font-bold text-glow mb-1.5">FOCUS 04</div>
                                     <div className="text-sm text-slate-100 font-sans font-semibold">Supplier & Integration Ops</div>
                                 </div>
                             </div>
@@ -186,7 +157,6 @@
                             </div>
                         </div>
 
-                        {/* Executive profile overview paragraph layout - INCREASING SIZES FROM MICRO TEXT */}
                         <div className="lg:col-span-5 text-sm text-slate-300 font-sans leading-relaxed border-l border-slate-900 pl-8 space-y-6">
                             <p>
                                 Engineering Project Manager with delivered expertise across complex aerospace programs — propulsion platforms, reusable launch vehicles, and advanced ground test environments.
@@ -194,15 +164,6 @@
                             <p>
                                 Bridge Systems Engineering loops directly with project management parameters to maintain absolute runtime tracking bounds against budgets, milestones, and critical risks from initial concept arrays to physical site execution validation.
                             </p>
-                            
-                            {/* OPTION FOR IMAGE IN HERO SIDE PANEL: 
-                                To replace the layout text with an image, uncomment the code structure below and comment out the two paragraphs above. */}
-                            {/*
-                            <div className="relative w-full h-72 border border-slate-800 overflow-hidden bg-slate-950">
-                                <img src="your-hero-photo.jpg" alt="Pruthvi Shankar" className="w-full h-full object-cover opacity-80" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#040814] via-transparent to-transparent"></div>
-                            </div>
-                            */}
                         </div>
                     </section>
 
@@ -220,9 +181,7 @@
                             </div>
                         </div>
 
-                        {/* 4-Quadrant Strategy grid mapping layout */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-slate-950 border border-slate-900/60">
-                            {/* Quadrant 01 */}
                             <div className="bg-[#040916] p-8 space-y-4 border-b md:border-b-0 md:border-r border-slate-900/60">
                                 <div className="flex items-center gap-3 text-cyanAccent font-mono text-xs tracking-wider">
                                     <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="target" className="w-4 h-4" /></div>
@@ -232,7 +191,6 @@
                                     Own scope, cost, and schedule with unambiguous accountability across engineering, ops, and vendors.
                                 </p>
                             </div>
-                            {/* Quadrant 02 */}
                             <div className="bg-[#040916] p-8 space-y-4">
                                 <div className="flex items-center gap-3 text-cyanAccent font-mono text-xs tracking-wider">
                                     <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="network" className="w-4 h-4" /></div>
@@ -242,7 +200,6 @@
                                     Trace intent from mission need down to shall-statement, and back up through verification evidence.
                                 </p>
                             </div>
-                            {/* Quadrant 03 */}
                             <div className="bg-[#040916] p-8 space-y-4 border-t border-slate-900/60 border-b md:border-b-0 md:border-r">
                                 <div className="flex items-center gap-3 text-cyanAccent font-mono text-xs tracking-wider">
                                     <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="shield-alert" className="w-4 h-4" /></div>
@@ -252,7 +209,6 @@
                                     Quantify, retire, or accept. Every risk has a name, an owner, and a burn-down date.
                                 </p>
                             </div>
-                            {/* Quadrant 04 */}
                             <div className="bg-[#040916] p-8 space-y-4 border-t border-slate-900/60">
                                 <div className="flex items-center gap-3 text-cyanAccent font-mono text-xs tracking-wider">
                                     <div className="p-2 border border-cyanAccent/20 bg-cyanAccent/5"><Icon name="git-merge" className="w-4 h-4" /></div>
@@ -277,16 +233,16 @@
                             </div>
                         </div>
 
-                        {/* Outer vertical timeline tracks line border container */}
-                        <div className="space-y-16 relative before:absolute before:top-0 before:bottom-0 before:left-[11px] before:w-px before:bg-slate-900">
+                        {/* Experience hover containers configuration updates applied */}
+                        <div className="space-y-6 relative before:absolute before:top-0 before:bottom-0 before:left-[11px] before:w-px before:bg-slate-900">
                             
                             {/* Position Card Block 01 */}
-                            <div className="relative pl-12 group">
-                                <div className="absolute left-1.5 top-2.5 w-3 h-3 bg-[#040814] border-2 border-cyanAccent rounded-full text-glow"></div>
-                                <div className="space-y-4">
+                            <div className="relative pl-12 group transition-all duration-300">
+                                <div className="absolute left-1.5 top-6 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent group-hover:scale-115 rounded-full text-glow transition-all"></div>
+                                <div className="border border-transparent group-hover:border-slate-800/80 group-hover:bg-[#050C1B]/40 p-6 transition-all duration-300 space-y-4">
                                     <div className="text-xs font-mono text-slate-400 tracking-wider">FEB 2026 — PRESENT</div>
                                     <div>
-                                        <h4 className="text-2xl font-bold text-white font-sans">Systems Engineer — Cryogenics (Project Execution Lead)</h4>
+                                        <h4 className="text-2xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Systems Engineer — Cryogenics (Project Execution Lead)</h4>
                                         <p className="text-sm font-mono text-cyanAccent mt-1">Shell-N-Tube · Pune, India</p>
                                     </div>
                                     <ul className="space-y-3 text-sm text-slate-300 font-sans max-w-4xl list-none">
@@ -306,12 +262,12 @@
                             </div>
 
                             {/* Position Card Block 02 */}
-                            <div className="relative pl-12 group">
-                                <div className="absolute left-1.5 top-2.5 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent rounded-full transition-colors"></div>
-                                <div className="space-y-4">
+                            <div className="relative pl-12 group transition-all duration-300">
+                                <div className="absolute left-1.5 top-6 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent group-hover:scale-115 rounded-full transition-all"></div>
+                                <div className="border border-transparent group-hover:border-slate-800/80 group-hover:bg-[#050C1B]/40 p-6 transition-all duration-300 space-y-4">
                                     <div className="text-xs font-mono text-slate-400 tracking-wider">AUG 2024 — JUN 2025</div>
                                     <div>
-                                        <h4 className="text-2xl font-bold text-white font-sans">VP Engineering (Program Lead)</h4>
+                                        <h4 className="text-2xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">VP Engineering (Program Lead)</h4>
                                         <p className="text-sm font-mono text-cyanAccent mt-1">Abyom SpaceTech & Defence · Hyderabad, India</p>
                                     </div>
                                     <ul className="space-y-3 text-sm text-slate-300 font-sans max-w-4xl list-none">
@@ -329,12 +285,12 @@
                             </div>
 
                             {/* Position Card Block 03 */}
-                            <div className="relative pl-12 group">
-                                <div className="absolute left-1.5 top-2.5 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent rounded-full transition-colors"></div>
-                                <div className="space-y-4">
+                            <div className="relative pl-12 group transition-all duration-300">
+                                <div className="absolute left-1.5 top-6 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent group-hover:scale-115 rounded-full transition-all"></div>
+                                <div className="border border-transparent group-hover:border-slate-800/80 group-hover:bg-[#050C1B]/40 p-6 transition-all duration-300 space-y-4">
                                     <div className="text-xs font-mono text-slate-400 tracking-wider">OCT 2023 — AUG 2024</div>
                                     <div>
-                                        <h4 className="text-2xl font-bold text-white font-sans">VP External Operations (Project Manager)</h4>
+                                        <h4 className="text-2xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">VP External Operations (Project Manager)</h4>
                                         <p className="text-sm font-mono text-cyanAccent mt-1">Abyom SpaceTech & Defence · Hyderabad, India</p>
                                     </div>
                                     <ul className="space-y-3 text-sm text-slate-300 font-sans max-w-4xl list-none">
@@ -352,12 +308,12 @@
                             </div>
 
                             {/* Position Card Block 04 */}
-                            <div className="relative pl-12 group">
-                                <div className="absolute left-1.5 top-2.5 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent rounded-full transition-colors"></div>
-                                <div className="space-y-4">
+                            <div className="relative pl-12 group transition-all duration-300">
+                                <div className="absolute left-1.5 top-6 w-3 h-3 bg-[#040814] border-2 border-slate-700 group-hover:border-cyanAccent group-hover:scale-115 rounded-full transition-all"></div>
+                                <div className="border border-transparent group-hover:border-slate-800/80 group-hover:bg-[#050C1B]/40 p-6 transition-all duration-300 space-y-4">
                                     <div className="text-xs font-mono text-slate-400 tracking-wider">OCT 2022 — OCT 2023</div>
                                     <div>
-                                        <h4 className="text-2xl font-bold text-white font-sans">Propulsion Engineer</h4>
+                                        <h4 className="text-2xl font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Propulsion Engineer</h4>
                                         <p className="text-sm font-mono text-cyanAccent mt-1">Abyom SpaceTech & Defence · Hyderabad, India</p>
                                     </div>
                                     <ul className="space-y-3 text-sm text-slate-300 font-sans max-w-4xl list-none">
@@ -388,7 +344,6 @@
                             </div>
                         </div>
 
-                        {/* Bento layout arrangement grid container matrix */}
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                             
                             {/* Mission Card 01 */}
@@ -524,7 +479,6 @@
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
                             <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-6 font-mono text-sm">
                                 
-                                {/* Skill Block Column 01 */}
                                 <div className="space-y-4">
                                     <div className="text-cyanAccent font-bold tracking-wider text-xs uppercase border-b border-slate-900 pb-2">PROJECT MANAGEMENT</div>
                                     <ul className="space-y-3 text-slate-300 list-none pl-0">
@@ -537,7 +491,6 @@
                                     </ul>
                                 </div>
 
-                                {/* Skill Block Column 02 */}
                                 <div className="space-y-4">
                                     <div className="text-cyanAccent font-bold tracking-wider text-xs uppercase border-b border-slate-900 pb-2">SYSTEMS ENGINEERING</div>
                                     <ul className="space-y-3 text-slate-300 list-none pl-0">
@@ -550,7 +503,6 @@
                                     </ul>
                                 </div>
 
-                                {/* Skill Block Column 03 */}
                                 <div className="space-y-4">
                                     <div className="text-cyanAccent font-bold tracking-wider text-xs uppercase border-b border-slate-900 pb-2">TOOLS & STANDARDS</div>
                                     <ul className="space-y-3 text-slate-300 list-none pl-0">
@@ -564,7 +516,6 @@
                                 </div>
                             </div>
 
-                            {/* Certifications stacked verification rows */}
                             <div className="lg:col-span-5 border border-slate-900/60 bg-[#040915] divide-y divide-slate-900/60 font-mono text-sm">
                                 <div className="p-4 flex items-start gap-4">
                                     <div className="mt-1 p-1.5 border border-cyanAccent/20 text-cyanAccent bg-cyanAccent/5"><Icon name="shield-check" className="w-4 h-4" /></div>
@@ -619,16 +570,15 @@
                                 </p>
                             </div>
                             <div className="lg:col-span-6 bg-[#040915] border-t lg:border-t-0 lg:border-l border-slate-900/60 terminal-grid min-h-[200px] relative">
-                                {/* <img src="university-campus.jpg" className="absolute inset-0 w-full h-full object-cover opacity-20" /> */}
                             </div>
                         </div>
                     </section>
 
-                    {/* --- SECTION // 08 · CONTACT UPLINK AND INTERACTIVE CONSOLE --- */}
+                    {/* --- SECTION // 06 · CONTACT Clean 2-Split Array Architecture Update Applied --- */}
                     <section id="contact" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
                         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
                             <div className="lg:col-span-4 space-y-2">
-                                <div className="text-xs font-mono text-cyanAccent tracking-widest">// 08 · UPLINK</div>
+                                <div className="text-xs font-mono text-cyanAccent tracking-widest">// 06 · UPLINK</div>
                                 <h3 className="text-4xl font-bold text-white font-sans tracking-tight">Establish contact<span className="text-cyanAccent">.</span></h3>
                             </div>
                             <div className="lg:col-span-8 flex items-end">
@@ -638,24 +588,48 @@
                             </div>
                         </div>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-                            <div className="lg:col-span-4 space-y-4">
-                                <div className="border border-slate-900 bg-[#050C1B]/20 p-5 font-mono space-y-3">
-                                    <div className="text-[10px] text-slate-500 tracking-wider uppercase">DIRECT CHANNEL</div>
-                                    <div className="space-y-2 text-sm text-slate-200">
-                                        <p className="flex items-center gap-2"><Icon name="mail" className="w-4 h-4 text-cyanAccent" /> pruthvishankarpulijala@gmail.com</p>
-                                        <p className="flex items-center gap-2"><Icon name="phone" className="w-4 h-4 text-cyanAccent" /> +91 63045 72330</p>
-                                        <p className="flex items-center gap-2"><Icon name="linkedin" className="w-4 h-4 text-cyanAccent" /> LinkedIn · /pruthvishankar</p>
+                        {/* Clean two-split array updates implemented directly below */}
+                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                            {/* Left Split Card Component Element Array */}
+                            <div className="space-y-4">
+                                <div className="border border-slate-900 bg-[#050C1B]/40 p-6 lg:p-8 font-mono space-y-6">
+                                    <div className="text-xs text-slate-500 tracking-wider uppercase border-b border-slate-900/60 pb-2">// DIRECT UPLINK CHANNELS</div>
+                                    
+                                    <div className="space-y-4 text-sm text-slate-200">
+                                        <div className="p-3 bg-[#030712]/50 border border-slate-900/80 flex items-center gap-3">
+                                            <Icon name="mail" className="w-5 h-5 text-cyanAccent" /> 
+                                            <div>
+                                                <div className="text-[10px] text-slate-500">COMMUNICATION RADAR</div>
+                                                <a href="mailto:pruthvishankarpulijala@gmail.com" className="hover:text-cyanAccent transition-colors">pruthvishankarpulijala@gmail.com</a>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="p-3 bg-[#030712]/50 border border-slate-900/80 flex items-center gap-3">
+                                            <Icon name="phone" className="w-5 h-5 text-cyanAccent" /> 
+                                            <div>
+                                                <div className="text-[10px] text-slate-500">SECURE SIGNAL LINK</div>
+                                                <a href="tel:+916304572330" className="hover:text-cyanAccent transition-colors">+91 63045 72330</a>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-3 bg-[#030712]/50 border border-slate-900/80 flex items-center gap-3">
+                                            <Icon name="linkedin" className="w-5 h-5 text-cyanAccent" /> 
+                                            <div>
+                                                <div className="text-[10px] text-slate-500">EXTERNAL MATRIX INDEX</div>
+                                                <a href="https://linkedin.com/in/pruthvishankar" target="_blank" rel="noopener noreferrer" className="hover:text-cyanAccent transition-colors">linkedin.com/in/pruthvishankar</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <div className="border border-slate-900 bg-[#050C1B]/20 p-5 font-mono space-y-1.5">
-                                    <div className="text-[10px] text-slate-500 tracking-wider uppercase">BASE OF OPERATIONS</div>
+                                <div className="border border-slate-900 bg-[#050C1B]/20 p-5 font-mono">
+                                    <div className="text-[10px] text-slate-500 tracking-wider uppercase mb-1">BASE OF OPERATIONS</div>
                                     <p className="text-sm text-slate-200 flex items-center gap-2"><Icon name="map-pin" className="w-4 h-4 text-cyanAccent" /> Pune, India</p>
                                 </div>
                             </div>
 
-                            <div className="lg:col-span-8 border border-slate-900/80 bg-[#040814] p-6 lg:p-8 space-y-6">
+                            {/* Right Split Card Component Element Array */}
+                            <div className="border border-slate-900/80 bg-[#040814] p-6 lg:p-8 space-y-6">
                                 <div className="text-xs font-mono text-slate-500">// NEW_MESSAGE.TXT</div>
                                 
                                 <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -679,7 +653,7 @@
                                     </div>
 
                                     <div className="flex flex-wrap justify-between items-center gap-4 pt-4 border-t border-slate-900">
-                                        <span className="text-xs font-mono text-slate-500">Submissions are logged securely.</span>
+                                        <span className="text-xs font-mono text-slate-500">Submissions logged locally.</span>
                                         <button type="submit" className="bg-cyanAccent text-black font-mono font-bold text-xs tracking-widest px-6 py-3.5 hover:bg-white transition-colors flex items-center gap-2 uppercase">
                                             TRANSMIT <Icon name="send" className="w-4 h-4" />
                                         </button>
@@ -730,8 +704,7 @@
             );
         }
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        ReactDOM.createRoot(document.getElementById('root')).render(<App />);
     </script>
 </body>
 </html>
