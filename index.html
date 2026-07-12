@@ -48,6 +48,23 @@
             background-image: radial-gradient(rgba(0, 240, 255, 0.15) 1px, transparent 1px);
             background-size: 20px 20px;
         }
+        /* ... existing styles ... */
+        
+        /* Add the marquee loop keyframes right here: */
+        @keyframes scrollTrack {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-50% - 12px));
+          }
+        }
+
+        .animate-scroll-track {
+          animation: scrollTrack 30s linear infinite;
+        }
+    </style>
+</head>
     </style>
 </head>
 <body class="font-sans antialiased">
@@ -783,6 +800,104 @@
                                 </div>
                             </div>
                         </div>
+                    </section>
+
+                    {/* --- SECTION // MEDIA UTILITY LOOP CAROUSEL --- */}
+                    <section id="media-vault" className="py-24 border-t border-slate-900/60 max-w-7xl mx-auto overflow-hidden">
+                        
+                        {/* Section Header */}
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12 px-6 lg:px-16">
+                            <div className="lg:col-span-4 space-y-2">
+                                <div className="text-xs font-mono text-cyanAccent tracking-widest">// MEDIA STREAM</div>
+                                <h3 className="text-4xl font-bold text-white font-sans tracking-tight">Facility & Project Feed<span className="text-cyanAccent">.</span></h3>
+                            </div>
+                            <div className="lg:col-span-8 flex items-end">
+                                <p className="text-sm text-slate-400 font-mono">
+                                    Continuous visual feed capturing core operations, facility architectures, process optimizations, and engineering development checkpoints.
+                                </p>
+                            </div>
+                        </div>
+
+                        {/* 
+                            EASY UPDATE SYSTEM: 
+                            To add a new photo, simply insert a new object item into this array matrix. 
+                            The automated template engine below will render it seamlessly.
+                        */}
+                        {(() => {
+                            const mediaAssets = [
+                                {
+                                    url: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=600&q=80',
+                                    title: 'Cryogenic Infrastructure',
+                                    category: 'FACILITY'
+                                },
+                                {
+                                    url: 'https://images.unsplash.com/photo-1541185933-ef5d8ed016c2?auto=format&fit=crop&w=600&q=80',
+                                    title: 'VTOL Demonstrator Test Frame',
+                                    category: 'DEVELOPMENT'
+                                },
+                                {
+                                    url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80',
+                                    title: 'Instrumentation Grid Deployment',
+                                    category: 'OPTIMIZATION'
+                                },
+                                {
+                                    url: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&w=600&q=80',
+                                    title: 'Pintle Injector Fluid Profile',
+                                    category: 'ARCHITECTURE'
+                                },
+                                {
+                                    url: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=600&q=80',
+                                    title: 'ISRO Propulsion Ops Briefing',
+                                    category: 'TEAM_PHOTO'
+                                }
+                            ];
+
+                            // Double the array loop to create a seamless pixel-perfect loop gap overlap
+                            const trackList = [...mediaAssets, ...mediaAssets];
+
+                            return (
+                                <div className="relative w-full overflow-hidden select-none group/carousel">
+                                    
+                                    {/* Vignette Edge Shading Mask for Cyberpunk Aesthetics */}
+                                    <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[#020617] to-transparent z-10 pointer-events-none" />
+                                    <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[#020617] to-transparent z-10 pointer-events-none" />
+
+                                    {/* Scrolling Horizontal Vector Track */}
+                                    <div className="flex gap-6 w-max animate-scroll-track hover:[animation-play-state:paused] transition-all">
+                                        {trackList.map((asset, idx) => (
+                                            <div 
+                                                key={idx} 
+                                                className="w-[280px] sm:w-[320px] shrink-0 bg-[#050C1B]/40 border border-slate-900/80 p-4 transition-all duration-300 hover:border-cyanAccent/40 group relative"
+                                            >
+                                                {/* Visual Media Canvas Container */}
+                                                <div className="relative aspect-[4/3] overflow-hidden bg-slate-950 border border-slate-900">
+                                                    <img 
+                                                        src={asset.url} 
+                                                        alt={asset.title}
+                                                        className="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity duration-500"
+                                                        loading="lazy"
+                                                    />
+                                                    <div className="absolute top-2 left-2 px-2 py-0.5 bg-black/80 border border-slate-800 text-[9px] font-mono text-cyanAccent uppercase tracking-widest">
+                                                        // {asset.category}
+                                                    </div>
+                                                </div>
+
+                                                {/* Meta Description Array Card */}
+                                                <div className="mt-3 space-y-1">
+                                                    <h4 className="text-sm font-bold text-white truncate font-sans group-hover:text-cyanAccent transition-colors">
+                                                        {asset.title}
+                                                    </h4>
+                                                    <div className="text-[10px] font-mono text-slate-500 flex justify-between items-center">
+                                                        <span>VECTOR CODE: #{100 + (idx % mediaAssets.length)}</span>
+                                                        <span className="text-slate-600">ONLINE</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            );
+                        })()}
                     </section>
 
                     {/* --- FOOTER MAP // END OF TRANSMISSION SECTION --- */}
