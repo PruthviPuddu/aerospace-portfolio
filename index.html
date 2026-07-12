@@ -712,86 +712,113 @@
                             </p>
                         </div>
                     
-                        {/* Right Column: Projects & Certifications Matrix (Takes up 7 cols) */}
-                        <div className="lg:col-span-7 grid grid-cols-1 md:grid-cols-2 gap-6 border-t lg:border-t-0 lg:border-l border-slate-900/80 pt-6 lg:pt-0 lg:pl-8 font-mono text-xs">
+                        {/* Right Column: Two Stacked Horizontal Interactive Blocks */}
+                        <div className="lg:col-span-7 flex flex-col gap-4 border-t lg:border-t-0 lg:border-l border-slate-900/80 pt-6 lg:pt-0 lg:pl-8 font-mono text-xs">
                             
-                            {/* Sub-Column 1: Experience & Projects While in B.Tech */}
-                            <div className="space-y-4">
-                                <div className="text-cyanAccent font-bold tracking-wider text-[11px] uppercase border-b border-slate-900 pb-2 flex items-center gap-1.5">
-                                    <span>// ACADEMIC PROJECTS</span>
-                                </div>
-                                
-                                <div className="space-y-4 overflow-y-auto max-h-[320px] pr-2 custom-scrollbar">
-                                    <div className="border border-slate-900/80 bg-[#020610] p-3 rounded hover:border-slate-800 transition-colors">
+                            {/* BLOCK 01: ACADEMIC PROPULSION & AVIONICS LABS */}
+                            <div className="border border-slate-900/80 bg-[#020610] rounded overflow-hidden">
+                                <button 
+                                    onClick={() => {
+                                        const el = document.getElementById('academic-projects-drawer');
+                                        el.classList.toggle('hidden');
+                                    }}
+                                    className="w-full text-left p-4 flex justify-between items-center bg-[#050C1B]/60 hover:bg-[#071329]/60 transition-colors group"
+                                >
+                                    <div className="space-y-1">
+                                        <div className="text-cyanAccent font-bold tracking-widest text-[10px]">// SYSTEM CORE · ACADEMIC INITIATIVES</div>
+                                        <h5 className="text-base font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Solid Motors, Drone Avionics & Experimental Propulsion</h5>
+                                        <p className="text-[11px] text-slate-400 font-mono italic tracking-tight">
+                                            Formulating fuels, calculating thrust matrices, and testing hardware boundaries throughout academia.
+                                        </p>
+                                    </div>
+                                    <Icon name="chevron-down" className="w-5 h-5 text-slate-500 group-hover:text-cyanAccent transition-colors shrink-0 ml-4" />
+                                </button>
+                    
+                                {/* Hidden Content Drawer */}
+                                <div id="academic-projects-drawer" className="hidden p-4 bg-[#030712] border-t border-slate-900 grid grid-cols-1 md:grid-cols-2 gap-3 max-h-[350px] overflow-y-auto">
+                                    <div className="border border-slate-900 bg-[#040915] p-3 rounded">
                                         <div className="flex justify-between items-center text-[10px] text-slate-500 mb-1">
-                                            <span className="font-bold text-slate-400">VIHANGARHANT</span>
+                                            <span className="font-bold text-slate-300">VIHANGARHANT</span>
                                             <span>APR 2019</span>
                                         </div>
-                                        <p className="text-slate-300 font-sans text-[11px]">Prototype armed/fighter drone. Studied layout aerodynamics, balance calculations, and frame structural assemblies.</p>
-                                        <div className="text-[9px] text-cyanAccent/70 mt-1.5 uppercase">STACK: AutoCAD 2018 | IEPC Project Expo</div>
+                                        <p className="text-slate-400 font-sans text-[11px]">Prototype armed fighter drone layout. Engineered blueprint balances, structural assemblies, and aero constraints.</p>
+                                        <div className="text-[9px] text-cyanAccent/80 mt-2">STACK: AutoCAD 2018 | IEPC Project Expo (Pune)</div>
                                     </div>
                     
-                                    <div className="border border-slate-900/80 bg-[#020610] p-3 rounded hover:border-slate-800 transition-colors">
+                                    <div className="border border-slate-900 bg-[#040915] p-3 rounded">
                                         <div className="flex justify-between items-center text-[10px] text-slate-500 mb-1">
-                                            <span className="font-bold text-slate-400">SUGAR ROCKETS</span>
+                                            <span className="font-bold text-slate-300">SUGAR ROCKETS</span>
                                             <span>MAY 2020</span>
                                         </div>
-                                        <p className="text-slate-300 font-sans text-[11px]">Characterized alternative composite solid fuel geometries and managed chemical burn profiles via simulations.</p>
-                                        <div className="text-[9px] text-cyanAccent/70 mt-1.5 uppercase">STACK: OpenRocket, MATLAB</div>
+                                        <p className="text-slate-400 font-sans text-[11px]">Researched chemical solid propellant compositions and mapped performance parameters inside validation loops.</p>
+                                        <div className="text-[9px] text-cyanAccent/80 mt-2">STACK: OpenRocket | MATLAB</div>
                                     </div>
                     
-                                    <div className="border border-slate-900/80 bg-[#020610] p-3 rounded hover:border-slate-800 transition-colors">
+                                    <div className="border border-slate-900 bg-[#040915] p-3 rounded">
                                         <div className="flex justify-between items-center text-[10px] text-slate-500 mb-1">
-                                            <span className="font-bold text-slate-400">BURN RATE ANALYSIS</span>
+                                            <span className="font-bold text-slate-300">BURN RATE ANALYSIS</span>
                                             <span>JUN 2021</span>
                                         </div>
-                                        <p className="text-slate-300 font-sans text-[11px]">Experimental formulation of fuel ratios to plot accurate linear regressions of SRM regressive burn curves.</p>
-                                        <div className="text-[9px] text-cyanAccent/70 mt-1.5 uppercase">STACK: OpenMotor, MATLAB, AutoCAD</div>
+                                        <p className="text-slate-400 font-sans text-[11px]">Experimental formulation of composite solid fuel batches to evaluate regression burn speeds accurately.</p>
+                                        <div className="text-[9px] text-cyanAccent/80 mt-2">STACK: OpenMotor | MATLAB | AutoCAD</div>
                                     </div>
                     
-                                    <div className="border border-slate-900/80 bg-[#020610] p-3 rounded hover:border-slate-800 transition-colors">
+                                    <div className="border border-slate-900 bg-[#040915] p-3 rounded">
                                         <div className="flex justify-between items-center text-[10px] text-slate-500 mb-1">
-                                            <span className="font-bold text-slate-400">I-CLASS MOTOR TEST</span>
+                                            <span className="font-bold text-slate-300">I-CLASS MOTOR STATIC TEST</span>
                                             <span>JUL 2022</span>
                                         </div>
-                                        <p className="text-slate-300 font-sans text-[11px]">Designed, machined, and static-fire tested an I-class solid rocket motor for telemetry comparison loops.</p>
-                                        <div className="text-[9px] text-cyanAccent/70 mt-1.5 uppercase">STACK: Fusion360, MATLAB, Arduino</div>
+                                        <p className="text-slate-400 font-sans text-[11px]">Designed, manufactured, and ran telemetry analysis on an original I-Class solid rocket motor configuration.</p>
+                                        <div className="text-[9px] text-cyanAccent/80 mt-2">STACK: Fusion360 | MATLAB | Arduino</div>
                                     </div>
                                 </div>
                             </div>
                     
-                            {/* Sub-Column 2: Certifications & Achievements */}
-                            <div className="space-y-4">
-                                <div className="text-cyanAccent font-bold tracking-wider text-[11px] uppercase border-b border-slate-900 pb-2 flex items-center gap-1.5">
-                                    <span>// CREDENTIALS & WORKSHOPS</span>
+                            {/* BLOCK 02: ADVANCED CREDENTIALS & DEEP-SPACE TRAINING */}
+                            <div className="border border-slate-900/80 bg-[#020610] rounded overflow-hidden">
+                                <button 
+                                    onClick={() => {
+                                        const el = document.getElementById('academic-certs-drawer');
+                                        el.classList.toggle('hidden');
+                                    }}
+                                    className="w-full text-left p-4 flex justify-between items-center bg-[#050C1B]/60 hover:bg-[#071329]/60 transition-colors group"
+                                >
+                                    <div className="space-y-1">
+                                        <div className="text-cyanAccent font-bold tracking-widest text-[10px]">// VERIFIED REPOSITORIES · WORKSHOPS</div>
+                                        <h5 className="text-base font-bold text-white font-sans group-hover:text-cyanAccent transition-colors">Mission Design Architecture & Satellite Frameworks</h5>
+                                        <p className="text-[11px] text-slate-400 font-mono italic tracking-tight">
+                                            Deepening domain context via advanced telemetry masterclasses, systems engineering, and orbit ops.
+                                        </p>
+                                    </div>
+                                    <Icon name="chevron-down" className="w-5 h-5 text-slate-500 group-hover:text-cyanAccent transition-colors shrink-0 ml-4" />
+                                </button>
+                    
+                                {/* Hidden Content Drawer */}
+                                <div id="academic-certs-drawer" className="hidden p-4 bg-[#030712] border-t border-slate-900 grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-300">
+                                    <div className="bg-[#040915] border border-slate-900 p-2.5 flex flex-col justify-between">
+                                        <div className="font-bold font-sans text-slate-200">CubeSat Design Matrix</div>
+                                        <span className="text-[10px] text-slate-500 mt-1">Indian Space Society (ISS)</span>
+                                    </div>
+                                    <div className="bg-[#040915] border border-slate-900 p-2.5 flex flex-col justify-between">
+                                        <div className="font-bold font-sans text-slate-200">Electric Propulsion Masterclass</div>
+                                        <span className="text-[10px] text-slate-500 mt-1">Indian Space Society (ISS)</span>
+                                    </div>
+                                    <div className="bg-[#040915] border border-slate-900 p-2.5 flex flex-col justify-between">
+                                        <div className="font-bold font-sans text-slate-200">Space Mission Design & Ops</div>
+                                        <span className="text-[10px] text-slate-500 mt-1">EPFL University via edX</span>
+                                    </div>
+                                    <div className="bg-[#040915] border border-slate-900 p-2.5 flex flex-col justify-between">
+                                        <div className="font-bold font-sans text-slate-200">High-Altitude Rocketry Forum</div>
+                                        <span className="text-[10px] text-slate-500 mt-1">STAR Labs</span>
+                                    </div>
+                                    <div className="bg-[#040915] border border-slate-900 p-2.5 sm:col-span-2 flex flex-col justify-between">
+                                        <div className="font-bold font-sans text-slate-200">Life Support Engineering & Systems on Space</div>
+                                        <span className="text-[10px] text-slate-500 mt-1">NASCA Workshop</span>
+                                    </div>
                                 </div>
-                                
-                                <ul className="space-y-3 text-slate-300 list-none pl-0">
-                                    <li className="bg-[#020610] p-2.5 border border-slate-900/80 rounded hover:border-slate-800 transition-colors">
-                                        <div className="font-bold text-slate-200 font-sans text-[12px]">CubeSat Design Matrix</div>
-                                        <div className="text-[10px] text-slate-500 mt-0.5">Indian Space Society (ISS)</div>
-                                    </li>
-                                    <li className="bg-[#020610] p-2.5 border border-slate-900/80 rounded hover:border-slate-800 transition-colors">
-                                        <div className="font-bold text-slate-200 font-sans text-[12px]">Electric Propulsion Masterclass</div>
-                                        <div className="text-[10px] text-slate-500 mt-0.5">Indian Space Society (ISS)</div>
-                                    </li>
-                                    <li className="bg-[#020610] p-2.5 border border-slate-900/80 rounded hover:border-slate-800 transition-colors">
-                                        <div className="font-bold text-slate-200 font-sans text-[12px]">Space Mission Design & Ops</div>
-                                        <div className="text-[10px] text-slate-500 mt-0.5">EPFL University via edX</div>
-                                    </li>
-                                    <li className="bg-[#020610] p-2.5 border border-slate-900/80 rounded hover:border-slate-800 transition-colors">
-                                        <div className="font-bold text-slate-200 font-sans text-[12px]">High-Altitude Rocketry Forum</div>
-                                        <div className="text-[10px] text-slate-500 mt-0.5">STAR Labs</div>
-                                    </li>
-                                    <li className="bg-[#020610] p-2.5 border border-slate-900/80 rounded hover:border-slate-800 transition-colors">
-                                        <div className="font-bold text-slate-200 font-sans text-[12px]">Life Support Systems in Space</div>
-                                        <div className="text-[10px] text-slate-500 mt-0.5">NASCA Workshop</div>
-                                    </li>
-                                </ul>
                             </div>
                     
                         </div>
-                    </div>
 
                    {/* --- SECTION // 06 · CONTACT INTERACTIVE TWIN-BLOCK ARRAY --- */}
                     <section id="contact" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
