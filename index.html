@@ -634,7 +634,7 @@
                         </div>
 
                         {/* Localized Mail Target Card Pullout Module */}
-                        <div id="mail-pullout-drawer" className="hidden transition-all duration-500 ease-in-out mb-8">
+                        <div id="mail-pullout-drawer" className="hidden transition-all duration-500 ease-in-out">
                             <div className="border border-cyanAccent/20 bg-[#040A18] p-6 font-mono grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
                                 <div className="space-y-2">
                                     <div className="text-[10px] text-cyanAccent tracking-wider uppercase">// PRIMAL DIRECT ROUTE</div>
@@ -656,41 +656,6 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>
-
-                        {/* Interactive Console Transmission Deck Form Component */}
-                        <div className="border border-slate-900/80 bg-[#040814] p-6 lg:p-8 space-y-6">
-                            <div className="text-xs font-mono text-slate-500">// ASYNCHRONOUS_TRANSMISSION_DECK.TXT</div>
-                            
-                            <form onSubmit={handleFormSubmit} className="space-y-6">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">FULL NAME</label>
-                                        <input type="text" name="name" value={formData.name} onChange={handleInputChange} placeholder="Your name" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">EMAIL</label>
-                                        <input type="email" name="email" value={formData.email} onChange={handleInputChange} placeholder="you@company.com" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
-                                    </div>
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">SUBJECT</label>
-                                    <input type="text" name="subject" value={formData.subject} onChange={handleInputChange} placeholder="Optional mission parameters" className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-mono" />
-                                </div>
-                                <div className="space-y-2">
-                                    <label className="text-xs font-mono text-slate-400 uppercase tracking-wider block">MESSAGE</label>
-                                    <textarea rows="4" name="message" value={formData.message} onChange={handleInputChange} placeholder="Brief the mission..." className="w-full bg-[#050C1B] border border-slate-900 p-3.5 text-sm text-white placeholder-slate-700 focus:border-cyanAccent/50 focus:outline-none font-sans" />
-                                </div>
-
-                                <div className="flex flex-wrap justify-between items-center gap-4 pt-4 border-t border-slate-900">
-                                    <span className="text-xs font-mono text-slate-500">Submissions logged locally.</span>
-                                    <button type="submit" className="bg-cyanAccent text-black font-mono font-bold text-xs tracking-widest px-6 py-3.5 hover:bg-white transition-colors flex items-center gap-2 uppercase">
-                                        TRANSMIT <Icon name="send" className="w-4 h-4" />
-                                    </button>
-                                </div>
-                            </form>
-
-                            {status && <div className="mt-4 p-3 bg-[#050C1B] border border-cyanAccent/30 text-xs font-mono text-cyanAccent">{status}</div>}
                         </div>
                     </section>
 
