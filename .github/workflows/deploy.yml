@@ -2,7 +2,8 @@ name: Deploy Portfolio to GitHub Pages
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - production
 
 permissions:
   contents: read
@@ -17,20 +18,21 @@ jobs:
   deploy:
     environment:
       name: github-pages
-      url: "${{ steps.deployment.outputs.page_url }}"
+      url: ${{ steps.deployment.outputs.page_url }}
+
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact
+      - name: Upload Website Files
         uses: actions/upload-pages-artifact@v3
         with:
-          # This tells GitHub to upload your static files directly from the root folder
-          path: '.'
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
