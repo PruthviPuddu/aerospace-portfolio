@@ -240,87 +240,108 @@
 
                     {/* --- SECTION // 02 · COMPLETE PROFESSIONAL TIMELINE LOG --- */}
                     <section id="experience" className="py-24 px-6 lg:px-16 border-t border-slate-900/60 max-w-7xl mx-auto">
-                        {/* ---------------- MISSION PROFILE HEADER ---------------- */}
-                        <div className="mb-20">
+                        {/* ========================= MISSION PROFILE ========================= */}
+
+                        <div className="grid lg:grid-cols-12 gap-10 items-start mb-16">
                         
-                            <div className="text-xs font-mono tracking-[0.35em] text-cyanAccent mb-3">
-                                // 02 · MISSION PROFILE
+                            {/* LEFT */}
+                        
+                            <div className="lg:col-span-5">
+                        
+                                <div className="text-cyanAccent font-mono tracking-[0.35em] text-sm mb-8">
+                                    02 • FLIGHT LOG
+                                </div>
+                        
+                                <div className="relative">
+                        
+                                    <div className="absolute -left-3 top-3 w-4 h-4 border-l-2 border-t-2 border-cyanAccent"></div>
+                        
+                                    <div className="absolute right-2 top-3 w-4 h-4 border-r-2 border-t-2 border-cyanAccent"></div>
+                        
+                                    <h1 className="text-6xl font-black tracking-wider text-white">
+                                        MISSION PROFILE
+                                    </h1>
+                        
+                                </div>
+                        
+                                <div className="mt-6 text-cyanAccent font-mono tracking-[0.22em] text-xl">
+                                    ENGINEERING LEADERSHIP JOURNEY
+                                </div>
+                        
+                                <p className="mt-8 max-w-md text-slate-300 leading-9 text-xl">
+                                    A progression of missions that built the capability
+                                    to lead and deliver complex aerospace programmes.
+                                </p>
+                        
                             </div>
-                            <div className="grid lg:grid-cols-12 gap-10">
-                                {/* Left */}
-                                <div className="lg:col-span-5">
-                                    <h2 className="text-5xl lg:text-6xl font-bold text-white leading-[1.05] tracking-tight">
-                                        Engineering
-                                        <br />
-                                        Leadership
-                                        <br />
-                                        Journey
-                                    </h2>                     
-                                    <p className="mt-8 text-slate-400 font-mono text-sm leading-7 max-w-md">
-                                        A mission profile documenting the evolution from propulsion
-                                        engineering to multidisciplinary systems engineering and
-                                        technical program leadership across aerospace and cryogenic
-                                        infrastructure.
-                                    </p>                    
-                                </div>                      
-                                {/* Right */}
-                                <div className="lg:col-span-7">              
-                                    <div className="border border-slate-800 bg-[#050C1B]/50 backdrop-blur-sm">                      
-                                        <div className="border-b border-slate-800 px-6 py-4 flex justify-between items-center">                        
-                                            <span className="font-mono text-xs tracking-[0.25em] text-cyanAccent">
-                                                MISSION DOSSIER
-                                            </span>                       
-                                            <span className="font-mono text-xs text-green-400">
-                                                ● ACTIVE
-                                            </span>                        
-                                        </div>                        
-                                        <div className="grid md:grid-cols-2 gap-x-10 gap-y-8 p-6">                        
-                                            <div>                        
-                                                <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500 mb-2">
+                        
+                            {/* RIGHT */}
+                        
+                            <div className="lg:col-span-7">
+                        
+                                <div className="border border-slate-800 rounded-lg overflow-hidden bg-[#06111d] relative">
+                        
+                                    <div
+                                        className="absolute inset-0 bg-cover bg-center opacity-60"
+                                        style={{
+                                            backgroundImage:
+                                                "url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?auto=format&fit=crop&w=1400&q=80')",
+                                        }}
+                                    ></div>
+                        
+                                    <div className="absolute inset-0 bg-gradient-to-r from-[#06111d] via-[#06111ddd] to-transparent"></div>
+                        
+                                    <div className="relative z-10 p-8 max-w-sm">
+                        
+                                        <div className="space-y-8">
+                        
+                                            <div>
+                        
+                                                <div className="font-mono text-cyanAccent text-xs tracking-[0.25em] mb-2">
+                                                    MISSION NAME
+                                                </div>
+                        
+                                                <div className="text-white text-2xl">
+                                                    Engineering Leadership Journey
+                                                </div>
+                        
+                                            </div>
+                        
+                                            <div>
+                        
+                                                <div className="font-mono text-cyanAccent text-xs tracking-[0.25em] mb-2">
                                                     MISSION OBJECTIVE
-                                                </div>                        
-                                                <p className="text-sm text-slate-300 leading-7">
-                                                    Build the capability to lead technically complex
-                                                    aerospace programmes from concept through delivery,
-                                                    combining systems engineering, execution, supplier
-                                                    integration and programme leadership.
-                                                </p>                        
-                                            </div>                        
-                                            <div className="space-y-6">                        
-                                                <div>                  
-                                                    <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500">
-                                                        CURRENT STATUS
-                                                    </div>
-                        
-                                                    <div className="text-cyanAccent font-mono mt-2">
-                                                        SYSTEMS & PROJECT ENGINEER
-                                                    </div>
-                        
                                                 </div>
                         
-                                                <div>
-                        
-                                                    <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500">
-                                                        MISSION DURATION
-                                                    </div>
-                        
-                                                    <div className="text-white font-mono mt-2">
-                                                        OCT 2022 → PRESENT
-                                                    </div>
-                        
+                                                <div className="text-slate-300 leading-8">
+                                                    Build the capability to lead and deliver
+                                                    technically complex aerospace programmes
+                                                    from concept through delivery.
                                                 </div>
                         
-                                                <div>
+                                            </div>
                         
-                                                    <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500">
-                                                        NEXT OBJECTIVE
-                                                    </div>
+                                            <div>
                         
-                                                    <div className="text-white font-mono mt-2">
-                                                        TECHNICAL PROGRAM MANAGEMENT
-                                                    </div>
-                        
+                                                <div className="font-mono text-cyanAccent text-xs tracking-[0.25em] mb-2">
+                                                    MISSION DURATION
                                                 </div>
+                        
+                                                <div className="text-white">
+                                                    2022 – Present
+                                                </div>
+                        
+                                            </div>
+                        
+                                            <div>
+                        
+                                                <div className="font-mono text-cyanAccent text-xs tracking-[0.25em] mb-2">
+                                                    CURRENT STATUS
+                                                </div>
+                        
+                                                <span className="inline-flex px-5 py-2 bg-green-900/40 border border-green-600 rounded text-green-300 font-mono tracking-[0.15em]">
+                                                    ACTIVE MISSION
+                                                </span>
                         
                                             </div>
                         
@@ -345,125 +366,185 @@
                     
                         <div className="space-y-12">
                             
-                            {/* ===================== MISSION PHASE 04 ===================== */}
+                            {/* ====================== PHASE 01 ====================== */}
 
-                        <div className="relative pl-16 group">
+                        <div className="border border-slate-800 rounded-lg overflow-hidden bg-[#050B16]">
                         
-                            {/* Timeline Node */}
+                            {/* Header */}
                         
-                            <div className="absolute left-3 top-8 w-5 h-5 rounded-full bg-[#040814] border-2 border-cyanAccent shadow-[0_0_20px_#22d3ee] transition-all duration-300 group-hover:scale-110"></div>
+                            <div className="border-b border-slate-800 px-8 py-6">
                         
-                            {/* Card */}
+                                <div className="font-mono text-cyanAccent tracking-[0.25em] text-sm">
+                                    MISSION TIMELINE
+                                </div>
                         
-                            <div className="border border-slate-800 bg-[#050C1B]/40 backdrop-blur-sm hover:border-cyanAccent/40 transition-all duration-300">
+                            </div>
                         
-                                {/* Header */}
+                            <div className="grid lg:grid-cols-12">
                         
-                                <div className="border-b border-slate-800 px-6 py-5 flex justify-between items-center">
+                                {/* LEFT */}
                         
-                                    <div>
+                                <div className="lg:col-span-2 border-r border-slate-800 p-8">
                         
-                                        <div className="text-[10px] tracking-[0.30em] font-mono text-cyanAccent">
-                                            MISSION PHASE 04
-                                        </div>
+                                    <div className="font-mono text-cyanAccent tracking-[0.25em] text-xs">
+                                        PHASE
+                                    </div>
                         
-                                        <div className="text-xs font-mono text-slate-500 mt-2">
-                                            FEB 2026 — PRESENT
+                                    <div className="text-7xl font-black text-cyanAccent mt-2">
+                                        01
+                                    </div>
+                        
+                                    <div className="mt-8">
+                        
+                                        <div className="font-mono text-cyanAccent tracking-[0.2em] leading-8">
+                                            MISSION
+                                            <br />
+                                            INITIATION
                                         </div>
                         
                                     </div>
                         
-                                    <div className="text-green-400 font-mono text-xs">
-                                        ● ACTIVE
+                                    <div className="mt-10 text-slate-500 font-mono text-sm leading-7">
+                                        OCT 2022
+                                        <br />
+                                        ↓
+                                        <br />
+                                        OCT 2023
                                     </div>
                         
                                 </div>
                         
-                                {/* Body */}
+                                {/* CENTER */}
                         
-                                <div className="p-8">
+                                <div className="lg:col-span-6 p-8">
                         
-                                    <div className="mb-8">
+                                    <div className="flex gap-8">
                         
-                                        <div className="text-xs tracking-[0.25em] font-mono text-slate-500 mb-3">
-                                            CURRENT MISSION
+                                        {/* Mission Icon */}
+                        
+                                        <div className="w-36 h-36 rounded-full border border-slate-700 flex items-center justify-center flex-shrink-0">
+                        
+                                            <div className="w-28 h-28 rounded-full border border-slate-700 flex items-center justify-center">
+                        
+                                                🚀
+                        
+                                            </div>
+                        
                                         </div>
                         
-                                        <h3 className="text-3xl font-bold text-white">
-                                            Systems & Project Engineer
-                                        </h3>
-                        
-                                        <p className="mt-2 text-cyanAccent font-mono">
-                                            Shell-N-Tube • Pune, India
-                                        </p>
-                        
-                                    </div>
-                        
-                                    <div className="grid lg:grid-cols-3 gap-8">
-                        
-                                        {/* Objective */}
+                                        {/* Content */}
                         
                                         <div>
                         
-                                            <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500 mb-3">
+                                            <h3 className="text-4xl font-bold text-white">
+                                                Propulsion Engineer
+                                            </h3>
+                        
+                                            <div className="mt-3 text-cyanAccent font-mono">
+                                                Abyom SpaceTech & Defence • Hyderabad
+                                            </div>
+                        
+                                            <div className="w-10 h-px bg-cyanAccent mt-8 mb-8"></div>
+                        
+                                            <div className="font-mono text-cyanAccent tracking-[0.2em] text-xs">
                                                 MISSION OBJECTIVE
                                             </div>
                         
-                                            <p className="text-sm text-slate-300 leading-7">
-                                                Deliver ISRO's helium recovery system by integrating
-                                                engineering, procurement, suppliers and execution into
-                                                one coordinated programme.
+                                            <p className="mt-5 text-slate-300 leading-9">
+                        
+                                                Develop first principles understanding of liquid
+                                                propulsion systems through design, analysis,
+                                                manufacturing and testing.
+                        
+                                            </p>
+                        
+                                            <div className="flex flex-wrap gap-3 mt-8">
+                        
+                                                {[
+                                                    "PROPULSION",
+                                                    "DESIGN",
+                                                    "TESTING",
+                                                    "ANALYSIS"
+                                                ].map((item)=>(
+                                                    <span
+                                                        key={item}
+                                                        className="px-4 py-2 border border-slate-700 font-mono text-xs"
+                                                    >
+                                                        {item}
+                                                    </span>
+                                                ))}
+                        
+                                            </div>
+                        
+                                        </div>
+                        
+                                    </div>
+                        
+                                </div>
+                        
+                                {/* RIGHT */}
+                        
+                                <div className="lg:col-span-4 border-l border-slate-800 bg-[#08111f]">
+                        
+                                    <div className="p-8 space-y-10">
+                        
+                                        <div>
+                        
+                                            <div className="font-mono text-cyanAccent text-xs tracking-[0.2em]">
+                                                OBJECTIVE
+                                            </div>
+                        
+                                            <p className="mt-3 text-slate-300 leading-8">
+                        
+                                                Designed, analysed and tested liquid propulsion
+                                                systems for reusable launch vehicles.
+                        
                                             </p>
                         
                                         </div>
                         
-                                        {/* Achievement */}
-                        
                                         <div>
                         
-                                            <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500 mb-3">
-                                                KEY ACHIEVEMENT
+                                            <div className="font-mono text-cyanAccent text-xs tracking-[0.2em]">
+                                                KEY DECISIONS
                                             </div>
                         
-                                            <p className="text-sm text-slate-300 leading-7">
-                                                Delivered multidisciplinary engineering execution
-                                                across more than twenty suppliers for a US$1.5M
-                                                cryogenic infrastructure programme.
+                                            <p className="mt-3 text-slate-300 leading-8">
+                        
+                                                Selected injector architecture, combustion chamber
+                                                configuration and thermal protection approaches.
+                        
                                             </p>
                         
                                         </div>
                         
-                                        {/* Capabilities */}
+                                        <div>
+                        
+                                            <div className="font-mono text-cyanAccent text-xs tracking-[0.2em]">
+                                                EXECUTION HIGHLIGHTS
+                                            </div>
+                        
+                                            <p className="mt-3 text-slate-300 leading-8">
+                        
+                                                Built injector assemblies, conducted hardware
+                                                testing and iterated propulsion designs.
+                        
+                                            </p>
+                        
+                                        </div>
                         
                                         <div>
                         
-                                            <div className="text-[10px] tracking-[0.25em] font-mono text-slate-500 mb-3">
-                                                CORE CAPABILITIES
+                                            <div className="font-mono text-cyanAccent text-xs tracking-[0.2em]">
+                                                MISSION OUTCOME
                                             </div>
                         
-                                            <div className="flex flex-wrap gap-2">
+                                            <p className="mt-3 text-slate-300 leading-8">
                         
-                                                <span className="px-3 py-2 border border-slate-700 text-xs font-mono">
-                                                    SYSTEMS
-                                                </span>
+                                                Established a strong engineering foundation in
+                                                propulsion, systems thinking and test engineering.
                         
-                                                <span className="px-3 py-2 border border-slate-700 text-xs font-mono">
-                                                    PROGRAMS
-                                                </span>
-                        
-                                                <span className="px-3 py-2 border border-slate-700 text-xs font-mono">
-                                                    SUPPLIERS
-                                                </span>
-                        
-                                                <span className="px-3 py-2 border border-slate-700 text-xs font-mono">
-                                                    CRYOGENICS
-                                                </span>
-                        
-                                                <span className="px-3 py-2 border border-slate-700 text-xs font-mono">
-                                                    RISK
-                                                </span>
-                        
-                                            </div>
+                                            </p>
                         
                                         </div>
                         
